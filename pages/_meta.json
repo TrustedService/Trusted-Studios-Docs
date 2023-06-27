@@ -1,0 +1,15 @@
+{
+  "index": "Introduction",
+  "nitro": "(FiveM) Nitro/Nos Script",
+  "farming": "(FiveM) Farming Plus",
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://trusted-studios.eu",
+    "newWindow": true
+  }
+}

@@ -1,0 +1,164 @@
+import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
+
+# Configurations
+
+These configurations have been written to allow each server to make individual adjustments for an enhanced experience.
+
+## Framework
+
+Defines the used Framework to allow the Script to be used on more servers. Frameworks which are supported by default are ox_core, ESX Legacy and Standalone. If you want to add your own Framework you can use bridge functions to do so. More information about the Bridge can be found [here](./Bridge/Functions).
+
+```lua
+Config.Framework = frameworkName
+```
+
+- frameworkName: `string`
+<Tabs items={["ESX", "OX", "Standalone"]}>
+    <Tab>
+        ```lua copy
+        Config.Framework = "ESX"
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.Framework = "OX"
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.Framework = "Standalone"
+        ```
+    </Tab>
+</Tabs>
+
+## Item
+
+Determines the item name you want to use, the time of usage during installation and the amount needed to install nitro.
+
+```lua
+Config.Item = {name, count, useTime}
+```
+
+- name: `string`
+- count: `number`
+- useTime: `number`
+
+```lua copy
+Config.Item = {
+    name = 'nitro',
+    count = 1,
+    useTime = 5000
+}
+```
+
+## Display Settings 
+
+Configure the locale options and some small color settings.
+
+```lua 
+Config.Display = {
+    Color = {r, g, b},
+     Text = {
+        ['text_entry'] = displayText,
+        ...
+    }
+}
+```
+
+- Color: `table`
+    - r: `number`
+    - g: `number`
+    - b: `number`
+- Text: `table`
+    - text_entry (key): `string` (Value)
+
+
+```lua copy
+Config.Display = {
+    color = {r = 255, g = 255, b = 255},
+    Text = {
+        ['add_nitro'] = 'Drücke ~INPUT_VEH_DUCK~ um Nitro einzubauen.',
+        ['nitro_added'] = 'Nitro wurde ~g~erfolgreich~s~ eingbaut!',
+        ['nitro_empty'] = 'Deine Nitro Flasche ist aufgebraucht.',
+        ['nitro_bar_label'] = 'Nitro',
+    }
+}
+```
+
+## Nitro Drainrate
+
+Defines the nitro drain rate. Lower values euquals longer usage time.
+
+```lua
+Config.NitroDrainRate = rate
+```
+
+- rate: `number` (default: 10)
+
+```lua copy
+Config.NitroDrainRate = 10
+```
+
+## Torque Multiplier
+
+```lua
+Config.TorqueMultiplier = multiplier
+```
+
+- multiplier: `number` (default: 2.0)
+
+```lua copy
+Config.TorqueMultiplier = 2.0
+```
+
+## Nitro Activation Key
+
+Note that changes to this configurations will not influence the controler input. This one is pre-defined in the script to prevent missunderstandings.
+If you want to change this configuration please pick an input index from the official cfx (FiveM) documentation: [FiveM docs](https://docs.fivem.net/docs/game-references/controls).
+
+```lua 
+Config.NitroKey = input 
+```
+
+- inout: `number` (default: 19 [ALT])
+
+```lua copy
+Config.NitroKey = 19
+```
+
+## Custom Visuals
+
+<Callout type="warning">
+**Do not** use this config if you don't know what you're doing! We will not support you if you're messing with these configurations!
+</Callout>
+
+```lua 
+Config.CustomVisual = {
+    Enabled = enabled, 
+    ProgressBarOffset = offsetIndex,
+    Notify = notifyFunction,
+    ShowHelp = showHelpFunction
+}
+```
+
+- enabled: `boolean`
+- offsetIndex: `number` (default: 1)
+- notifyFunction: `function`
+    - text (p1): `string`
+- showHelpFunction: `function`
+    - text (p1): `string`
+    - bleep (p2): `boolean`
+
+```lua copy
+Config.CustomVisual = {
+    Enabled = true, 
+    ProgressBarOffset = 25, -- default: 1
+    Notify = function(text) 
+        ---@add: add own notify
+    end,
+    ShowHelp = function(text, bleep)
+        ---@add: add own ShowHelp
+    end
+}
+```

@@ -1,0 +1,107 @@
+import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
+
+# Configurations
+
+The Farming Script has been meticulously designed to provide developers with the flexibility to customize each component according to their preferences, without compromising the integrity of the script. We have implemented intelligent logic that seamlessly adapts to changes made to individual components during runtime, ensuring that the script remains functional even when certain components are modified or removed.
+
+For instance, if you wish to establish a hidden and discreet illegal farming location without a visible blip on the map, you can easily achieve this by removing the blip component from the config table. By eliminating the blip, players will have a harder time locating the farming spot, enhancing the secrecy and challenge of the activity.
+
+<Callout type='info'>
+    Please note that not every component can be removed. Components that can be removed will be marked with a '?' symbol following their name (e.g., Blip?).
+</Callout>
+
+## Farming Positions
+
+```lua copy
+Config.Farming = {
+    {
+        Blip = { 
+            type = 1, 
+            scale = 0.8, 
+            color = -1, 
+            label = 'Farming' 
+        },
+        Zone = { 
+            coords = vec3(2226.71, 5577.86, 53.71), 
+            radius = 15 
+        },
+        Item = { 
+            label = 'Potato', 
+            name = 'potato', 
+            count = {min = 1, max = 3}, 
+        }, 
+        CollectTime = 15, 
+        Animation = 'WORLD_HUMAN_GARDENER_PLANT' 
+    },
+    ...
+}
+```
+
+- Blip?: `table`
+    - creates a blip on the map if added as a component
+    - type: `number`
+    - scale: `number`,
+    - color: `number`
+    - label: `string`
+
+*example:*
+```lua copy
+Blip = {
+    type = 1,
+    scale = 0.8,
+    color = -1, 
+    label = 'Farming'
+},
+```
+
+- Zone: `table`
+    - defines the location and the radius in wich the player can start to farm.
+    - coords: `vec3`
+    - radius: `number`
+
+*example:*
+```lua copy
+Zone = {
+    coords = vec3(2226.71, 5577.86, 53.71), 
+    radius = 15 
+},
+```
+
+- Item: `table`
+    - defines the item wich will be farmed by the player. 
+    - label: `string` (the item label from your DB)
+    - name: `string` (the item name from your DB)
+    - count: `table` or `number`
+
+*example:*
+<Tabs items={['table', 'number']}>
+    <Tab>
+        ```lua copy 
+        Item = { 
+            label = 'Potato', 
+            name = 'potato', 
+            count = {min = 1, max = 3}, --> random number in this range
+        },
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy 
+        Item = { 
+            label = 'Potato', 
+            name = 'potato', 
+            count = 2, 
+        },
+        ```
+    </Tab>
+</Tabs>
+
+- CollectTime: `number`
+- Animation: `string`
+
+<Callout type='warning'>
+    Please be aware that you have the ability to add an unlimited number of farming positions. However, it's important to consider that having a large number of locations may impact performance.
+</Callout>
+
+## Sellpoints
+
