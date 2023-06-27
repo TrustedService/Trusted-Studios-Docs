@@ -39,7 +39,7 @@ Config.Farming = {
 ```
 
 - Blip?: `table`
-    - creates a blip on the map if added as a component
+    - *Creates a blip on the map if added as a component.*
     - type: `number`
     - scale: `number`,
     - color: `number`
@@ -56,7 +56,7 @@ Blip = {
 ```
 
 - Zone: `table`
-    - defines the location and the radius in wich the player can start to farm.
+    - *Defines the location and the radius in wich the player can start to farm.*
     - coords: `vec3`
     - radius: `number`
 
@@ -69,7 +69,7 @@ Zone = {
 ```
 
 - Item: `table`
-    - defines the item wich will be farmed by the player. 
+    - *Defines the item wich will be farmed by the player.*
     - label: `string` (the item label from your DB)
     - name: `string` (the item name from your DB)
     - count: `table` or `number`
@@ -103,5 +103,111 @@ Zone = {
     Please be aware that you have the ability to add an unlimited number of farming positions. However, it's important to consider that having a large number of locations may impact performance.
 </Callout>
 
+## Crafting 
+
+```lua copy 
+Config.Process = {
+    {
+        Blip = { 
+            type = 792,  
+            scale = 0.8, 
+            color = -1,
+            label = 'Potato salad (crafting)' 
+        },
+        Coords = vec4(30.09, 6445.48, 31.43, 226.12),
+        Ped = 's_m_m_migrant_01',
+        ItemCrafting = {
+            {
+                required = {
+                    {label = 'Potato', name = 'potato', amount = 4}, 
+                    {label = 'Egg', name = 'egg', amount = 2}, 
+                },
+                crafted = {
+                    label = 'Potato Salad',
+                    name = 'potato_salad',
+                    amount = 1
+                }, 
+                CraftingTime = 15
+            }
+        }
+    },
+    ...
+}
+```
+
+- Blip?: `table`
+    - *Creates a blip on the map if added as a component*
+    - type: `number`
+    - scale: `number`,
+    - color: `number`
+    - label: `string`
+
+*example:*
+```lua copy
+Blip = {
+    type = 1,
+    scale = 0.8,
+    color = -1, 
+    label = 'Farming'
+},
+```
+
+- Coords: `vec4`
+- Ped: `string`
+- ItemCrafting: `table`
+    - *Contains all crafting components.*
+    - required: `table`
+        - *Contains a table of entries wich represents the items required to craft.*
+        - label: `string`
+        - name: `string`
+        - amount: `number`
+    
+    *example:*
+    ```lua copy
+    required = {
+        {label = 'Potato', name = 'potato', amount = 4}, 
+        {label = 'Egg', name = 'egg', amount = 2},
+        ...
+    }
+    ```
+
+    - crafted: `number`
+        - *Contains the item information that will be crafted.*
+        - label: `string`
+        - name: `string`
+        - amount: `number`
+    
+    *example:*
+    ```lua copy 
+    crafted = {
+        label = 'Potato Salad',
+        name = 'potato_salad',
+        amount = 1
+    }
+    ```
+
+    - CraftingTime: `number`
+
+<Callout type='warning'>
+    Please be aware that you have the ability to add an unlimited number of crafting positions. However, it's important to consider that having a large number of locations may impact performance.
+</Callout>
+
 ## Sellpoints
 
+```lua copy
+Config.SellPoints = {
+    {
+        Blip = { 
+            type = 792,  
+            scale = 0.8, 
+            color = -1,
+            label = 'Potato Salad seller' 
+        },
+        Coords = vec4(1218.78, 1848.65, 78.97, 223.92),
+        Ped = 's_m_y_waretech_01', 
+        Items = {
+            {label = 'Potato Salad', name = 'potato_salad', reward = 1000, black = false}, 
+        }
+    },
+}
+```
