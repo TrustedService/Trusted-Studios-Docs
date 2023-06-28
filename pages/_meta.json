@@ -1,15 +1,16 @@
 {
-  "index": "Introduction",
-  "web": {
-    "title": "Website ↗",
-    "type": "page",
-    "href": "https://trusted-studios.eu",
-    "newWindow": true
-  },
-  "store": {
-    "title": "Store ↗",
-    "type": "page",
-    "href": "https://shop.trusted-studios.eu",
-    "newWindow": true
-  }
+    "index": "Introduction",
+    "web": {
+        "title": "Website ↗",
+        "type": "page",
+        "href": "https://trusted-studios.eu",
+        "newWindow": true
+    },
+    "store": {
+        "title": "Store ↗",
+        "type": "page",
+        "href": "https://shop.trusted-studios.eu",
+        "newWindow": true
+    },
+    "fivem": "FiveM"
 }
