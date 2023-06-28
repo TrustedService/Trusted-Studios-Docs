@@ -1,0 +1,382 @@
+import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
+
+# Configurations
+
+The Farming Script has been meticulously designed to provide developers with the flexibility to customize each component according to their preferences, without compromising the integrity of the script. We have implemented intelligent logic that seamlessly adapts to changes made to individual components during runtime, ensuring that the script remains functional even when certain components are modified or removed.
+
+For instance, if you wish to establish a hidden and discreet illegal farming location without a visible blip on the map, you can easily achieve this by removing the blip component from the config table. By eliminating the blip, players will have a harder time locating the farming spot, enhancing the secrecy and challenge of the activity.
+
+<Callout type='info'>
+    Please note that not every component can be removed. Components that can be removed will be marked with a '?' symbol following their name (e.g., Blip?).
+</Callout>
+
+## Farming Positions
+
+By adding a table with components inside `Config.Farming`, you can include a new farming location.
+
+```lua copy {2-20}
+Config.Farming = {
+    {
+        Blip = { 
+            type = 1, 
+            scale = 0.8, 
+            color = -1, 
+            label = 'Farming' 
+        },
+        Zone = { 
+            coords = vec3(2226.71, 5577.86, 53.71), 
+            radius = 15 
+        },
+        Item = { 
+            label = 'Potato', 
+            name = 'potato', 
+            count = {min = 1, max = 3}, 
+        }, 
+        CollectTime = 15, 
+        Animation = 'WORLD_HUMAN_GARDENER_PLANT' 
+    },
+    ...
+}
+```
+
+- Blip?: `table`
+    - *Creates a blip on the map if added as a component.*
+    - type: `number`
+    - scale: `number`,
+    - color: `number`
+    - label: `string`
+
+*example:*
+```lua copy
+Blip = {
+    type = 1,
+    scale = 0.8,
+    color = -1, 
+    label = 'Farming'
+},
+```
+
+- Zone: `table`
+    - *Defines the location and the radius in wich the player can start to farm.*
+    - coords: `vec3`
+    - radius: `number`
+
+*example:*
+```lua copy
+Zone = {
+    coords = vec3(2226.71, 5577.86, 53.71), 
+    radius = 15 
+},
+```
+
+- Item: `table`
+    - *Defines the item wich will be farmed by the player.*
+    - label: `string` (the item label from your DB)
+    - name: `string` (the item name from your DB)
+    - count: `table` or `number`
+
+*example:*
+<Tabs items={['table', 'number']}>
+    <Tab>
+        ```lua copy 
+        Item = { 
+            label = 'Potato', 
+            name = 'potato', 
+            count = {min = 1, max = 3}, --> random number in this range
+        },
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy 
+        Item = { 
+            label = 'Potato', 
+            name = 'potato', 
+            count = 2, 
+        },
+        ```
+    </Tab>
+</Tabs>
+
+- CollectTime: `number`
+- Animation: `string`
+
+<Callout type='warning'>
+    Please be aware that you have the ability to add an unlimited number of farming positions. However, it's important to consider that having a large number of locations may impact performance.
+</Callout>
+
+## Crafting 
+
+In the following configuration, you can define new crafting locations.
+
+```lua copy {2-25}
+Config.Process = {
+    {
+        Blip = { 
+            type = 792,  
+            scale = 0.8, 
+            color = -1,
+            label = 'Potato salad (crafting)' 
+        },
+        Coords = vec4(30.09, 6445.48, 31.43, 226.12),
+        Ped = 's_m_m_migrant_01',
+        ItemCrafting = {
+            {
+                required = {
+                    {label = 'Potato', name = 'potato', amount = 4}, 
+                    {label = 'Egg', name = 'egg', amount = 2}, 
+                },
+                crafted = {
+                    label = 'Potato Salad',
+                    name = 'potato_salad',
+                    amount = 1
+                }, 
+                CraftingTime = 15
+            }
+        }
+    },
+    ...
+}
+```
+
+- Blip?: `table`
+    - *Creates a blip on the map if added as a component.*
+    - type: `number`
+    - scale: `number`,
+    - color: `number`
+    - label: `string`
+
+*example:*
+```lua copy
+Blip = {
+    type = 1,
+    scale = 0.8,
+    color = -1, 
+    label = 'Farming'
+},
+```
+
+- Coords: `vec4`
+- Ped: `string`
+- ItemCrafting: `table`
+    - *Contains all crafting components.*
+    - required: `table`
+        - *Contains a table of entries wich represents the items required to craft.*
+        - label: `string`
+        - name: `string`
+        - amount: `number`
+    
+    *example:*
+    ```lua copy
+    required = {
+        {label = 'Potato', name = 'potato', amount = 4}, 
+        {label = 'Egg', name = 'egg', amount = 2},
+        ...
+    }
+    ```
+
+    - crafted: `number`
+        - *Contains the item information that will be crafted.*
+        - label: `string`
+        - name: `string`
+        - amount: `number`
+    
+    *example:*
+    ```lua copy 
+    crafted = {
+        label = 'Potato Salad',
+        name = 'potato_salad',
+        amount = 1
+    }
+    ```
+
+    - CraftingTime: `number`
+
+<Callout type='warning'>
+    Please be aware that you have the ability to add an unlimited number of crafting positions. However, it's important to consider that having a large number of locations may impact performance.
+</Callout>
+
+## Sellpoints
+
+In the given configuration, you can define new locations where you can sell items.
+
+```lua copy {2-14}
+Config.SellPoints = {
+    {
+        Blip = { 
+            type = 792,  
+            scale = 0.8, 
+            color = -1,
+            label = 'Potato Salad seller' 
+        },
+        Coords = vec4(1218.78, 1848.65, 78.97, 223.92),
+        Ped = 's_m_y_waretech_01', 
+        Items = {
+            {label = 'Potato Salad', name = 'potato_salad', reward = 1000, black = false}, 
+        }
+    },
+    ...
+}
+```
+
+- Blip?: `table`
+    - *Creates a blip on the map if added as a component.*
+    - type: `number`
+    - scale: `number`,
+    - color: `number`
+    - label: `string`
+
+*example:*
+```lua copy
+Blip = {
+    type = 1,
+    scale = 0.8,
+    color = -1, 
+    label = 'Potato Salad seller'
+},
+```
+
+- Coords: `vec4`
+- Ped: `string`
+- Items: `table`
+    - *Defines the items the player can sell.*
+    - label: `string`
+    - name: `string`
+    - reward: `number`
+    - black: `number`
+
+<Callout type='warning'>
+    Please be aware that you have the ability to add an unlimited number of crafting positions. However, it's important to consider that having a large number of locations may impact performance.
+</Callout>
+
+## Shops
+
+The following config enables you to add specific shops if you need them but we don't recomend them to be used as your main shops!
+
+<Callout type='error'>
+    Please **DO NOT** use these shops as your primary shops!
+</Callout>
+
+```lua copy {2-14}
+Config.Shops = {
+    {
+        Blip = {
+            type = 1, 
+            scale = 0.8, 
+            color = -1,
+            label = 'Apotheke'
+        },
+        Coords = vec4(68.95, -1570.01, 29.60, 50.0),
+        Ped = 's_m_m_doctor_01',
+        Items = {
+            {label = 'Egg', name = 'egg', price = 14, count = 1},
+        }
+    },
+    ...
+}
+```
+
+- Blip?: `table`
+    - *Creates a blip on the map if added as a component.*
+    - type: `number`
+    - scale: `number`,
+    - color: `number`
+    - label: `string`
+
+*example:*
+```lua copy
+Blip = {
+    type = 1,
+    scale = 0.8,
+    color = -1, 
+    label = 'Potato Salad seller'
+},
+```
+
+- Coords: `vec4`
+- Ped: `string`
+- Items: `table`
+    - *Defines the items the player can sell.*
+    - label: `string`
+    - name: `string`
+    - price: `number`
+    - count: `number` (the amount of items given per purchase)
+
+<Callout type='warning'>
+    Please be aware that you have the ability to add an unlimited number of crafting positions. However, it's important to consider that having a large number of locations may impact performance.
+</Callout>
+
+## Text (Locales)
+
+Locales enables you to translate display-texts in your native language.
+
+```lua copy 
+Config.Text = {
+    ['start_farming'] = 'Drücke ~INPUT_CONTEXT~ um ~y~%s~s~ zu sammeln.',
+    ['open_craft_menu'] = 'Drücke ~INPUT_CONTEXT~ um die Verarbeitungsstelle zu verwalten.',
+    ['open_sell_menu'] = 'Drücke ~INPUT_CONTEXT~ um die Verkaufsstelle zu verwalten.',
+    ['open_shop_menu'] = 'Drücke ~INPUT_CONTEXT~ um den Shop zu verwalten.',
+    ['error'] = '~r~Ein Fehler ist aufgetreten!',
+    ['weight_limit_exceeded'] = '~r~Du hast nicht mehr die nötigen Kapazitäten um diese Items aufzunehmen!', 
+    ['farming_succeded'] = 'Du hast erfolgreich ~y~%sx %s~s~ gesammelt!',
+    ['craft_in_progress'] = '~r~Du bist bereits dabei etwas zu verarbeiten!',
+    ['not_enougth_items'] = '~r~Du hast nicht die nötigen Items um zu verarbeiten!',
+    ['started_crafting'] = 'Du hast mit der Herstellung von ~y~%s~s~ begonnen...',
+    ['crafting_succeeded'] = 'Du hast erfolgreich ~y~%sx %s~s~ hergestellt.',
+    ['items_needed'] = "Benötigte Items:",
+    ['already_crafting'] = "Du bist bereits dabei etwas zu verarbeiten!",
+    ['amount'] = 'Menge',
+    ['price'] = 'Preis',
+    ['purchase_suceeded'] = 'Kauf wurde erfolgreich abgeschlossen!',
+    ['not_enougth_money'] = '~r~Du hast nicht genügend Geld!',
+    ['wrong_amount'] = '~r~Gebe bitte ein vernünftige Zahl ein!',
+    ['not_enougth_items_to_sell'] = '~r~Du besitzt nicht die Summe an Items, die du verkaufen möchtest!',
+    ['sell_succeeded'] = 'Du hast ~y~%sx %s~s~ für ~g~$%s~s~ verkauft!',
+    ['processing'] = 'Verarbeitung läuft...',
+    ['menu_worker_title'] = 'Verarbeitung',
+    ['menu_worker_subtitle'] = '~b~Verarbeite deine Produkte :D',
+    ['menu_sell_title'] = 'Verkauf',
+    ['menu_sell_subtitle'] = '~b~Verkaufe deine Produkte :D',
+    ['menu_shop_title'] = 'Shop',
+    ['menu_shop_subtitle'] = '~b~Kaufe deine Produkte :D'
+}
+```
+
+- translation: `string`
+
+<Callout type='error'>
+    Do **NOT** change the key (for example `['start_farming']`) or your translations will not work!
+</Callout>
+
+## Custom Visuals
+
+This configurations will override some visual components to match your server's UI.
+
+<Callout type='warning'>
+    Do **NOT** use this config if you don't know what you're doing! We will not support you if you're messing with these configurations!
+</Callout>
+
+```lua copy
+Cofnig.CustomVisual = {
+    Enabled = false, 
+    ShowHelp = function(text, bleep)
+        ---@add: custom show help functionality
+    end,
+    Notify = function(text)
+        ---@add: custom notify 
+    end
+}
+```
+
+- Enabled: `boolean`
+- ShowHelp: `function`
+    - *Overrides the scripts `ShowHelp` function. Please keep in mind that this function is called every frame!*
+    - text: `string` (the text wich will be displayed)
+    - bleep: `boolean` (if a sound should be played)
+- Notify: `function`
+    - *Overrides the scrtips `Notify` function.*
+    - text: `string` (the text wich will be displayed)
+
+<Callout type='warning'>
+    If the config is enabled both functions will be overwritten! 
+</Callout>
