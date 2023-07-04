@@ -1,0 +1,45 @@
+import { Callout } from 'nextra/components';
+
+# Framework Bridge
+
+![Brdige](../../../public/imgs/bridge.png)
+
+A framework bridge is a way to support multiple frameworks by overriding specific functions. It allows the script to be designed in such a way that it is compatible with *almost* every existing framework. However, it is crucial to have a good understanding of what you're doing, as these functions are essential components of the scripts.
+
+## How to create a new framework bridge? 
+
+To add a new framework bridge you need to create new files at the following file path: `/bridge/framework/`. These files are not encrypted by default and can be edited anytime. Once your in the right path, you will have to create a file named after your framework in the `client` and `server` folders. These files will contain the overrides to integrate your framework in the script.
+
+## First-Steps
+
+To ensure that your files will run without any problems we highly advise you to add the following boilerplate code at the start of your files: 
+
+```lua copy {1, 21-23}
+if Config.Framework ~= 'frameworkName' then 
+    return
+end
+
+-- ════════════════════════════════════════════════════════════════════════════════════ --
+-- Trusted Development || Debug-print
+-- ════════════════════════════════════════════════════════════════════════════════════ --
+
+if Trusted.Debug then
+    local filename = function()
+        local str = debug.getinfo(2, "S").source:sub(2)
+        return str:match("^./(.).lua$") or str
+    end
+    print("^6[SERVER - DEBUG] ^0: "..filename()..".lua gestartet");
+end
+
+-- ════════════════════════════════════════════════════════════════════════════════════ --
+-- Code
+-- ════════════════════════════════════════════════════════════════════════════════════ --
+
+frameworkName = {}
+
+frameworkName.Shared = GetSharedObjectFunctionOrEvent
+```
+
+<Callout type="info">
+    Please make sure that `frameworkName` match the name of the framework that you defined in your Config file [Framework Configuration](../nitro/2_Config#Framework)
+</Callout>
