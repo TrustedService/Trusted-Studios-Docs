@@ -1,4 +1,5 @@
 import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
 
 # Framework Bridge
 
@@ -43,3 +44,30 @@ frameworkName.Shared = GetSharedObjectFunctionOrEvent
 <Callout type="info">
     Please make sure that `frameworkName` match the name of the framework that you defined in your Config file [Framework Configuration](../nitro/2_Config#Framework)
 </Callout>
+
+<Tabs items={['Other', 'ESX Events', "QBCore Event"]}>
+    <Tab>
+        <Callout type="warning">
+            Depending on what Framework you are using, events will be nessecary to ensure that the data is synced whith the script. You can simply add them down below and storing the data in the (e.g.) `frameworkName.Shared.job` Variable.
+        </Callout>
+    </Tab>
+    <Tab>
+        ```lua copy 
+        RegisterNetEvent('esx:playerLoaded', function(xPlayer)
+            ESX.Shared.PlayerData = xPlayer
+        end)
+
+        RegisterNetEvent('esx:setJob', function(job)
+            ESX.Shared.PlayerData.job = job
+        end)
+        ```
+    </Tab>
+    <Tab>
+    ```lua copy
+    RegisterNetEvent('QBCore:Client:UpdateObject', function()
+        QBCore.Shared = exports['qb-core']:GetCoreObject()
+    end)
+    ```
+    </Tab>
+</Tabs>
+
