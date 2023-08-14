@@ -1,0 +1,68 @@
+import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
+
+# Client Functions
+
+## HasJob
+
+```lua
+frameworkName:HasJob(job)
+```
+
+- job: `string`
+
+### Example
+
+<Tabs items={['ESX', 'QBcore']}>
+    <Tab>
+    ```lua copy 
+    function ESX:HasJob(job)
+        return not job and true or self.Shared?.PlayerData?.job?.name == job
+    end
+    ```
+    </Tab>
+    <Tab>
+    ```lua copy 
+    function QBCore:HasJob(job)
+        local PlayerData = self.Shared?.Functions?.GetPlayerData()
+        return not job and true or PlayerData?.job?.name == job  
+    end
+    ```
+
+    <Callout type='error'>
+        This Code has not been tested an can contain errors. Please report these if you encounter any!
+    </Callout>
+    </Tab>
+</Tabs>
+
+## HasGrade
+
+```lua 
+frameworkName:HasGrade(grade)
+```
+
+- grade: `number`
+
+### Example
+
+<Tabs items={['ESX', 'QBcore']}>
+    <Tab>
+    ```lua copy 
+    function ESX:HasGrade(grade)
+        return self.Shared?.PlayerData?.job?.grade >= grade
+    end
+    ```
+    </Tab>
+    <Tab>
+    ```lua copy 
+    function QBCore:HasGrade(grade)
+        local PlayerData = self.Shared?.Functions?.GetPlayerData()
+        return PlayerData?.job?.grade?.level >= grade 
+    end
+    ```
+
+    <Callout type='error'>
+        This Code has not been tested an can contain errors. Please report these if you encounter any!
+    </Callout>
+    </Tab>
+</Tabs>
