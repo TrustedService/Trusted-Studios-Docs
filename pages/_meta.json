@@ -12,5 +12,11 @@
         "href": "https://shop.trusted-studios.eu",
         "newWindow": true
     },
+    "status": {
+        "title": "Status ↗",
+        "type": "page",
+        "href": "https://status.trusted-studios.eu",
+        "newWindow": true
+    },
     "fivem": "FiveM"
 }
