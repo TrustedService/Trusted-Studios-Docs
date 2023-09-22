@@ -132,4 +132,48 @@ Config.Routes = {
         Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
     </Callout>
 
-## 
+## Uniform
+If this configuration is enabled the player will be given a uniform upon starting his duty.
+
+```lua copy 
+Config.Uniform = {
+    Enabled = true,
+    Male = {
+        arms = 11,
+        pants_1 = 13, pants_2 = 0,
+        shoes_1 = 51, shoes_2 = 0,
+        tshirt_1 = 15, tshirt_2 = 0,
+        bproof_1 = 52,
+        torso_1 = 213, torso_2 = 10,
+    },
+    Female = {
+        ...
+    }
+}
+```
+
+- Uniform: `table`
+    - Enabled: `boolean` (determines the player will wear a uniform or not)
+    - Male: `table` (contains clothing data)
+    - Female = `table` (contains clothing data)
+
+<Callout type="warning">
+    Please keep in mind that this function has only been tested with ESX!
+</Callout>
+
+## NPCs
+As the script utilizes NPC interactions you can add peds to this list, so that they can be spawned in a randomized order while the player is driving an active bus line.
+<Callout type="info">
+    We highly advice you to use scenario peds, as these have different apperarences every time they spawn. This ensures an immersive experience for the player. 
+</Callout>
+
+```lua copy 
+Config.NPC = {
+    "s_m_m_autoshop_01",
+    "s_m_m_dockwork_01",
+    "s_m_m_hairdress_01",
+    ...
+}
+```
+
+- NPC: `table<string>`
