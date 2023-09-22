@@ -1,6 +1,7 @@
 {
     "nitro": "Nitro/Nos Script",
     "farming": "Farming Plus",
-    "job_garage": "Job Garage",
+    "job_garage": "Advanced Job Garage",
+    "basic-job_garage": "Basic Job Garage",
     "busdriver": "Busdriver Job"
 }

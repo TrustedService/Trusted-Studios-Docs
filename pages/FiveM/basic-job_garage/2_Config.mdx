@@ -1,0 +1,95 @@
+import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
+
+# Configurations
+
+The following config has been designed to provide highly flexible settings, allowing users to customize the script according to their specific needs. With its adjustable parameters, this script aims to cater to a wide range of requirements and ensure optimal adaptability.
+
+## Framework
+
+Defines the used Framework to allow the Script to be used on more servers. Frameworks which are supported by default are ESX Legacy, QBCore and Standalone. If you want to add your own Framework you can use bridge functions to do so. More information about the Bridge can be found [here](./Bridge/Functions).
+
+<Tabs items={["ESX", "Standalone", "Other"]}>
+    <Tab>
+        ```lua copy
+        Config.Framework = "ESX"
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.Framework = "Standalone"
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.Framework = "Other"
+        ```
+    </Tab>
+</Tabs>
+
+- frameworkName: `string`
+
+<Callout type="warning">
+    Please keep in mind that the script has only been tested with ESX Legacy. Thus the QBCore Version is only available at you own risk. If you want to make changes to the QBCore code you can do so in the Bridge section. More information about the Bridge can be found [here](./Bridge/Functions).
+</Callout>
+
+## Garages
+
+This is the main configuration as it defines new garages and their properties. We have implemented intelligent logic that seamlessly adapts to changes made to individual components during runtime, ensuring that the script remains functional even when certain components are modified or removed.
+
+<Tabs items={["Normal", "Lightweight"]}>
+    <Tab>
+        ```lua
+        ["police"] = {
+            Label = "Police Garage",
+            Job = 'police', 
+            Coords = vec3(0, 0, 0),
+            SpawnCoords = vec4(0, 0, 0, 0), 
+            Blip = {
+                id = 1, 
+                scale = 0.8, 
+                colour = -1,
+            },
+            Vehicles = {
+                ['police'] = {
+                    label = 'Police Interceptor',
+                    grade = 2, 
+                    defaultExtras = {
+                        [1] = true, 
+                        [4] = true, 
+                        [12] = true
+                    }
+                },
+            }
+        },
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        ["mechanic"] = {
+            Label = "Mechanic Garage",
+            Coords = vec3(0, 0, 0),
+            Vehicles = {
+                ['towtruck'] = 'Tow Truck'
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+- Name of the garage (Key): `table`
+    - Label: `string`
+    - Job?: `string`
+    - Coords: `vec3`
+    - SpawnCoords?: `vec4`
+    - Blip?: `table`
+        - id: `number`
+        - scale: `number`
+        - colour: `number`
+    - Vehicles: `table`
+        - vehicle spawn name (Key): `table` or `string` (vehicle label)
+            - label: `string`
+            - grade: `number`
+            - defaultExtras: `table`
+                - Key (Number): `boolean`
+
