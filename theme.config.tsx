@@ -1,5 +1,6 @@
-import React from 'react'
 import { DocsThemeConfig, useConfig } from 'nextra-theme-docs'
+
+import React from 'react'
 import { useRouter } from 'next/router';
 
 function useHead() {
@@ -53,7 +54,7 @@ const config: DocsThemeConfig = {
     chat: {
         link: 'https://discord.gg/hmmM89nCdX',
     },
-    docsRepositoryBase: 'https://github.com/TrustedService/Trusted-Studios-Docs/blob/main',
+    docsRepositoryBase: 'https://github.com/Trusted-Studios/Trusted-Studios-Docs/tree/main',
     footer: {
         text: 'Trusted Studios',
     },
