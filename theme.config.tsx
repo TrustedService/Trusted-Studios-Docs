@@ -7,19 +7,19 @@ function useHead() {
     const { frontMatter, title } = useConfig();
     const url = `https://docs.trusted-studios.eu${asPath}`;
     const description = frontMatter.description || "Documentation for Trusted Studios' resources";
-  
+
     return (
-      <>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/x-icon" href="/imgs/logo.png" />
-        <meta httpEquiv="Content-Language" content="en" />
-        <meta name="description" content={description} />
-        <meta name="og:title" content={title} />
-        <meta name="og:description" content={description} />
-        <meta name="og:url" content={url} />
-      </>
+        <>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="icon" type="image/x-icon" href="/imgs/logo.png" />
+            <meta httpEquiv="Content-Language" content="en" />
+            <meta name="description" content={description} />
+            <meta name="og:title" content={title} />
+            <meta name="og:description" content={description} />
+            <meta name="og:url" content={url} />
+        </>
     );
-  }
+}
 
 function useNextSeoProps() {
     const { asPath } = useRouter();
@@ -36,17 +36,17 @@ function useNextSeoProps() {
 const config: DocsThemeConfig = {
     logo: (
         <div
-          style={{
-            paddingLeft: '50px',
-            lineHeight: '38px',
-            background: "url('/imgs/logo.png') no-repeat left",
-            backgroundSize: '38px',
-            fontWeight: 550,
-          }}
+            style={{
+                paddingLeft: '50px',
+                lineHeight: '38px',
+                background: "url('/imgs/logo.png') no-repeat left",
+                backgroundSize: '38px',
+                fontWeight: 550,
+            }}
         >
-          Trusted Studios
+            Trusted Studios
         </div>
-      ),
+    ),
     project: {
         link: 'https://github.com/TrustedService/Trusted-Studios-Docs',
     },
@@ -60,6 +60,15 @@ const config: DocsThemeConfig = {
     useNextSeoProps: useNextSeoProps,
     head: useHead,
     primaryHue: { dark: 30, light: 290 },
+    // sidebar: {
+    //     titleComponent({ title, type}) {
+    //         return (
+    //             <>
+    //                 [PAID] {title}   
+    //             </>
+    //         )
+    //     }
+    // }
 }
 
 export default config
