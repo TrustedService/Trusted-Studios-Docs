@@ -1,7 +1,20 @@
 {
+    "paid": {
+        "type": "separator",
+        "title": "Paid Scripts"
+    },
     "nitro": "Nitro/Nos Script",
+    "busdriver": "Busdriver Job",
     "farming": "Farming Plus",
     "job_garage": "Advanced Job Garage",
+    
+    "free": {
+        "type": "separator",
+        "title": "Free Scripts"
+    },
+    "basic-flares": "Basic Flares",
+    "basic-farming": "Basic Farming",
     "basic-job_garage": "Basic Job Garage",
-    "busdriver": "Busdriver Job"
+    "basic-pkg-bomb": "Basic Pkg Bomb",
+    "basic-carkeys": "Basic Car Keys"
 }
