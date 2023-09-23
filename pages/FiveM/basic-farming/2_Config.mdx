@@ -1,0 +1,121 @@
+import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
+
+# Configuration
+
+<Callout type="error">
+    Please keep in mind that this script is extremely old and that past GMW had just begun writing FiveM scripts in Lua. If you want a knew and better version with way more features, please check out [Farming Plus](https://shop.trusted-studios.eu/package/5649143)
+</Callout>
+
+## Menu Position
+Change the position of the interaction menu.
+
+<Tabs items={["Right", "Left"]}>
+    <Tab>
+        ```lua copy
+        Config.MenuPosition = "right"
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.MenuPosition = "left"
+        ```
+    </Tab>
+</Tabs>
+
+- MenuPosition: `string`
+
+## Enable / Disable Blips
+Choose wether you want your players to see a Blip revealing the farming locations or not.
+
+<Tabs items={["Show", "Hide"]}>
+    <Tab>
+        ```lua copy
+        Config.BlipEnable = true
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.BlipEnable = false
+        ```
+    </Tab>
+</Tabs>
+
+- BlipEnable: `boolean`
+
+## Farming Locations & Options
+This is the most important part of this config, as these lines define the farming locations and their options.
+
+<Callout type="warning">
+    As you will see down below, some variables and their names doesn't make any sense. This is due to the lack of knowledge GMW had when he wrote this script (2021). This **WILL NOT** affect the end result at all. It's just a bit cringe.
+</Callout>
+
+```lua copy
+Config.Farm = {
+    Type = {
+        {
+            Label = "Salad", 
+            Value = "salad", 
+            BlipLabel = "Salad Plantation", 
+            Anim = "world_human_gardener_plant", 
+            BlipNumber = 208, 
+            Time = 20000, 
+            Count = 5, 
+            coords = vec3(1956.4, 4797.42, 43.62)
+        },
+    }
+}
+```
+
+- Farm: `table`
+    - Type: `table` (don't ask the script is old...)
+        - Label: `string`
+        - Value: `string`
+        - BlipLabel: `string`
+        - Anim: `string`
+        - BlipNumber: `number`
+        - Time: `number` (in ms)
+        - Count: `number`
+        - coords: `vec3`
+
+        *Example:*
+        ```lua copy
+        {Label = "Salad", Value = "salad", BlipLabel = "Salad Plantation", Anim = "world_human_gardener_plant", BlipNumber = 208, Time = 20000, Count = 5, coords = vec3(1956.4, 4797.42, 43.62)},
+        ```
+
+## Shops
+Farming Items without beeing able to sell then woudn't make any sense. This is why you can configure your shops right here!
+
+```lua copy
+Config.Shop = {
+    Pos = {
+        {BlipLabel = 'Händler', Coords = vec4(386.06, -326.16, 46.87,160.01)}, 
+    }, 
+    Items = {              
+        {Label = "Salad", Value = "salad", Price = 8},	
+    }
+}
+```
+
+- Shop: `table`
+    - Pos: `table`
+        - BlipLabel: `string`
+        - Coords: `vec4`
+
+        *Example:*
+        ```lua copy
+        {BlipLabel = 'Händler', Coords = vec4(386.06, -326.16, 46.87,160.01)},
+        ```
+
+    - Items: `table`
+        - Label: `string`
+        - Value: `string`
+        - Price: `number`
+
+        *Example:*
+         ```lua copy
+        {Label = "Salad", Value = "salad", Price = 8},	
+        ```
+
+
+
