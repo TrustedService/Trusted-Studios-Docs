@@ -69,13 +69,24 @@ Config.Start = {
     - Name of the bus line (Key): `table` 
         - coords: `vec4` (the location)
         - bus_model: `string` (the model of the bus used by the player)
-        - extra: `number` (wich extra the bus should have **!! Currently not working !!**)
+        - trailer_model?: `string` (if you want to use a bus with a trailer)
+        - extra: `number` (wich extra the bus should have)
+        - livery?: `number` (wich livery the bus should have)
         - time: `number` (the amount of time in minutes to finish the line)
 
     *example:*
-    ```lua copy
-    ['X49'] = {coords = vec4(459.03, -633.20, 28.49, 220.00), bus_model = "bus", extra = 1, time = 7},
-    ```
+    <Tabs items={["Standard", "With trailer"]}>
+        <Tab>
+            ```lua copy
+            ['X49'] = {coords = vec4(459.03, -633.20, 28.49, 220.00), bus_model = "bus", extra = 1, time = 7},
+            ```
+        </Tab>
+        <Tab>
+            ```lua copy
+            ['SB82'] = {coords = vec4(459.03, -633.20, 28.49, 220.00), bus_model = "bus", trailer_model = "bustrailermodel", extra = 1, livery = 3, time = 12},
+            ```
+        </Tab>
+    </Tabs>
 
 ## Salary
 Set the salary wich is binded to a bus line.
@@ -84,6 +95,7 @@ Set the salary wich is binded to a bus line.
 Config.Salary = {
     ["X49"] = 1200,
     ["071"] = 8000,
+    ...
 }
 ```
 
@@ -113,6 +125,7 @@ Config.Routes = {
         {bus_stop = "Paleto Bay -> Grapeseed", coords = vec4(-312.54, 6043.30, 32.23, 313.72)},
         {bus_stop = "Grapeseed", coords = vec4(1708.73, 4806.32, 42.64, 271.34)},
     },
+    ...
 }
 ```
 
@@ -120,11 +133,12 @@ Config.Routes = {
     - Name of the bus line (Key): `table`: 
         - bus_stop: `string` (name of the bus stop)
         - coords: `vec4` (location of the bus stop)
+        - changeExtra?: `number` (changes the bus extra at this specific stop) 
     
     *example:*
     ```lua copy
     ["071"] = {
-        {bus_stop = "Strawberry Ave -> LSIA", coords = vec4(307.61, -766.03, 29.25, 162.15)},
+        {bus_stop = "Strawberry Ave -> LSIA", coords = vec4(307.61, -766.03, 29.25, 162.15), changeExtra = 2},
     }
     ```
 
