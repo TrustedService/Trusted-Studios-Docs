@@ -7,6 +7,8 @@
     "busdriver": "Busdriver Job",
     "farming": "Farming Plus",
     "job_garage": "Advanced Job Garage",
+    "gopostal": "GoPostal Job",
+    "trucker-plus": "Advanced Trucker",
     
     "free": {
         "type": "separator",

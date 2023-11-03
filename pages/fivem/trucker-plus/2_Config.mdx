@@ -1,0 +1,55 @@
+import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
+
+# Configurations
+
+To ensure that every of your needs are met, make sure to change the options down below to your liking.
+
+## Job
+
+Determines if the player needs a job to work and if he does, wich one.
+
+<Tabs items={["With Job", "Without Job"]}>
+    <Tab>
+        ```lua copy
+        Config.Job = 'trucker'
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.Job = nil
+        ```
+    </Tab>
+</Tabs>
+
+- Job: `string` | `nil`
+
+## Depot
+Set position where the player can start jobs.
+
+```lua copy
+Config.Depot = {.
+    {coords = vec4(-238.94, -1397.78, 31.28, 280.00), truckSpawn = vec4(-221.09, -1363.58, 31.26, 160.00)},
+    ...
+}
+```
+
+- Depot: `table`
+    - coords: `vec4`
+    - truckSpawn: `vec4`
+
+## NPCs
+Set a list of NPCs wich will be used randomly for interaction characters.
+
+```lua copy
+Config.NPC = {
+    "s_m_m_autoshop_01",
+    "s_m_m_dockwork_01",
+    ...
+}
+```
+
+- NPC: `table`
+    - ped_model_name: `string`
+
+## Rewards: 
