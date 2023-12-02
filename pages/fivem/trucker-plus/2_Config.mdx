@@ -53,3 +53,101 @@ Config.NPC = {
     - ped_model_name: `string`
 
 ## Rewards: 
+<Callout type="warning">
+    Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
+</Callout>
+
+
+```lua copy
+Config.Rewards = {
+    ['Kurze Route'] = {money = 1000, level = 5},
+    ['Mittlere Route'] = {money = 5000, level = 10},
+    ['Lange Route'] = {money = 10000, level = 50},
+}
+```
+
+- Rewards : `table`
+    - route (key): table
+        money: `number`
+        level: `number` (the amount of gained xp)
+
+## Routes: 
+<Callout type="warning">
+    Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
+</Callout>
+
+```lua copy
+Config.Routes = {
+    ['Kurze Route'] = {
+       requiredLevel = 0,
+       start = {
+           vec4(-250.59, -248.18, 36.52, 00.00),
+           ...
+       },
+       deliver = {
+           vec4(742.22, -667.25, 27.79, 83.04),
+           vec4(-215.13, -2484.84, 6.00, 92.13),
+           ...
+       }
+    }
+},
+```
+
+- Routes: `table`
+    - route (key): table
+        - requiredLevel: `number`
+        - start: `table<vec4>` [^1]
+        - deliver: `table<vec4>` 
+
+[^1]: You can add as many coords as you want. The script will then pick one randomly each time you start a route.
+
+
+## Trucks
+<Callout type="warning">
+    Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
+</Callout>
+
+```lua copy
+Config.Trucks = {
+    ['Kurze Route'] = {
+        'mule',
+        'mule2'
+    }
+}
+```
+
+- Trucks: `table`
+    route (key): `table<string>`[^2]
+
+[^2]: The table contains the list of spawnnames. When the player starts a route a truck is then picked randomly.
+
+## Trailers
+<Callout type="warning">
+    Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
+</Callout>
+
+```lua copy
+Config.Trailers = {
+   ['Lange Route'] = {
+        'trailers'
+    }
+}
+```
+
+- Trucks: `table`
+    route (key): `table<string>`[^3]
+
+[^3]: The table contains the list of spawnnames. When the player starts a route a trailer is then picked randomly. If you don't want to use a trailer just dont add any to the specific route.
+
+## Vertical Infobar Offset:
+Change the y-position of the info bar
+
+```lua copy
+Config.VerticalInfoBarOffset = 1
+```
+
+- VerticalInfoBarOffset: `number`
+
+The greater the number, the higher the y-position.
+
+---

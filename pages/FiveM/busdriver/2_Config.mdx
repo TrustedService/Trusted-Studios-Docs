@@ -20,13 +20,21 @@ Define the location at wich a player can go on/off duty.
 ```lua copy
 Config.DutyStart = {
     {coords = vec3(452.77, -621.58, 28.56), label = 'Bus Station Downtown LS'},
-    {coords = vec3(1718.59, 4792.07, 41.98), label = 'Bus Station Blaine County'},
+    {coords = vec3(1718.59, 4792.07, 41.98), label = 'Bus Station Blaine County', blip = {
+        id = 85,
+        scale = 0.8,
+        color = -1
+    }},
 }
 ```
 
 - DutyStart: `table`
     - coords: `vec3` (the position of the bus station)
     - label: `string` (the name of the bus station)
+    - blip?: `table` (blip customization)
+        - id: `string`
+        - scale: `number`
+        - color: `number`
 
 ## Live Blip / Radar
 Enable / disable the usage of a blip that acts as a live radar for players to see the location of a bus line. This blip isn't fully accurate and is only update every few seconds (or what you configured it to be).
@@ -169,7 +177,7 @@ Config.Uniform = {
 - Uniform: `table`
     - Enabled: `boolean` (determines the player will wear a uniform or not)
     - Male: `table` (contains clothing data)
-    - Female = `table` (contains clothing data)
+    - Female: `table` (contains clothing data)
 
 <Callout type="warning">
     Please keep in mind that this function has only been tested with ESX!
@@ -191,3 +199,50 @@ Config.NPC = {
 ```
 
 - NPC: `table<string>`
+
+## UI Custimization
+If you want to customize the provided UI you can use the following options.
+
+```lua copy
+Config.UI = {
+    Text = {
+        time_remaining = "Verbleibende Zeit",
+        stops = "Haltestelle",
+        satisfaction = "Zufriedenheit der Gäste"
+    },
+    Position = {
+        marginRight = 0,
+        marginTop = 0,
+    }
+}
+```
+
+- Text: `table`
+    - time_remaining: `string`
+    - stops: `string`
+    - satisfaction: `string`
+
+<Callout type="info">
+    The default values are mt-[1.5rem] and mr-[2rem]. Any changes to the following options will overwrite these vaules in rem. So if you want your right padding to be 10 the value will be overwritten to mr-[10rem].
+</Callout>
+- Position: `table`
+    - marginRight: `number`
+    - marginTop: `number`
+
+### Additional Infomation:
+
+As mentioned before the default vaules are used if your options are equal to 0. By default the UI is in the to right of your screen with some spacing.
+
+![image](../../../public/imgs/busdriver-ui-1.png)
+
+If you wanted the UI to be in the bottom right and a bit further from the right border you'd have to write the following config options: 
+```lua copy
+Position = {
+    marginRight = 10,
+    marginTop = 34,
+}
+```
+
+![image](../../../public/imgs/busdriver-ui-2.png)
+
+This means that the greater the number you choose the further the UI will move to the bottom/left of your screen.
