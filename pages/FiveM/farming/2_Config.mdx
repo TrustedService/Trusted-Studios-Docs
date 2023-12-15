@@ -11,6 +11,15 @@ For instance, if you wish to establish a hidden and discreet illegal farming loc
     Please note that not every component can be removed. Components that can be removed will be marked with a '?' symbol following their name (e.g., Blip?).
 </Callout>
 
+## Random Crafting Requirements Interval
+Random amounts of crafting requirements will be updated after each interval.
+
+```lua copy
+Config.RandomCraftingInterval = 60
+```
+
+- RandomCraftingInterval: `number` -> in minutes
+
 ## Farming Positions
 
 By adding a table with components inside `Config.Farming`, you can include a new farming location.
@@ -124,7 +133,7 @@ Config.Process = {
             {
                 required = {
                     {label = 'Potato', name = 'potato', amount = 4}, 
-                    {label = 'Egg', name = 'egg', amount = 2}, 
+                    {label = 'Egg', name = 'egg', amount = {min = 2, max = 6}}, 
                 },
                 crafted = {
                     label = 'Potato Salad',
@@ -164,7 +173,7 @@ Blip = {
         - *Contains a table of entries wich represents the items required to craft.*
         - label: `string`
         - name: `string`
-        - amount: `number`
+        - amount: `number` | `table<min: number, max: number>` -> choose if you want an predefined or randomised amount of required items.
     
     *example:*
     ```lua copy
@@ -243,7 +252,7 @@ Blip = {
     - label: `string`
     - name: `string`
     - reward: `number`
-    - black: `number`
+    - black: `boolean`
 
 <Callout type='warning'>
     Please be aware that you have the ability to add an unlimited number of crafting positions. However, it's important to consider that having a large number of locations may impact performance.
