@@ -132,22 +132,20 @@ Config.CustomVisual = {
     ShowHelp = function(text, bleep)
         ---@add: custom show help functionality
     end,
-    Notify = function(text)
-        ---@add: custom notify 
-    end
+    Notify = nil
 }
 ```
 
-- Enabled: `boolean`
-- ProgressBarOffset: `number`
-- ShowHelp: `function`
-    - *Overrides the scripts `ShowHelp` function. Please keep in mind that this function is called every frame!*
+- HideProgressBar: `boolean` if enabled the Progressbar will be hidden entirely.
+- ProgressBarOffset: `number` Changes the y-position of the Progressbar.
+- ShowHelp?: `function` or `nil`
+    - *Overwrites the scripts `ShowHelp` function. Please keep in mind that this function is called every frame!*
     - text: `string` (the text wich will be displayed)
     - bleep: `boolean` (if a sound should be played)
-- Notify: `function`
-    - *Overrides the scrtips `Notify` function.*
+- Notify?: `function` or `nil`
+    - *Overwrites the scrtips `Notify` function.*
     - text: `string` (the text wich will be displayed)
 
-<Callout type='warning'>
-    If the config is enabled both functions (`ShowHelp` & `Notify`) will be overwritten! 
+<Callout type='info'>
+    You can delete the `ShowHelp` or `Notify` config option if you don't need them. The Script will proceed to use the default `Notify` / `ShowHelp` functions. 
 </Callout>
