@@ -1,4 +1,11 @@
 {
+    "shop": {
+        "type": "separator",
+        "title": "Shop"
+    },
+    "products": "Buy and Claim",
+    "refund": "Refund",
+    
     "paid": {
         "type": "separator",
         "title": "Paid Scripts"
