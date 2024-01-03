@@ -1,0 +1,29 @@
+{
+    "shop": {
+        "type": "separator",
+        "title": "Shop"
+    },
+    "products": "Buy and Claim",
+    "refund": "Refund",
+
+    "paid": {
+        "type": "separator",
+        "title": "Paid Scripts"
+    },
+    "nitro": "Nitro/Nos Script",
+    "busdriver": "Busdriver Job",
+    "farming": "Farming Plus",
+    "job_garage": "Advanced Job Garage",
+    "gopostal": "GoPostal Job",
+    "trucker-plus": "Advanced Trucker",
+
+    "free": {
+        "type": "separator",
+        "title": "Free Scripts"
+    },
+    "basic-flares": "Basic Flares",
+    "basic-farming": "Basic Farming",
+    "basic-job_garage": "Basic Job Garage",
+    "basic-pkg-bomb": "Basic Pkg Bomb",
+    "basic-carkeys": "Basic Car Keys"
+}
