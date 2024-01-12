@@ -1,7 +1,7 @@
 {
-  "name": "nextra-docs-template",
-  "version": "0.0.1",
-  "description": "Nextra docs template",
+  "name": "trusted-studios-docs",
+  "version": "1.0.0",
+  "description": "Trusted-Studios Docs",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -19,8 +19,8 @@
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
     "next": "^13.4.7",
-    "nextra": "^2.7.0",
-    "nextra-theme-docs": "latest",
+    "nextra": "^2.13.2",
+    "nextra-theme-docs": "^2.13.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
