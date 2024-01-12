@@ -10,10 +10,19 @@ To ensure that every of your needs are met, make sure to change the options down
 Determines if the player needs a job to work with GoPostal.
 
 ```lua copy
-Config.Job = true
+Config.NeedJob = true
 ```
 
-- Job: `boolean`
+- NeedJob: `boolean`
+
+## Job Name
+Set the job stored in your Database you want to use. The default value is 'gopostal', wich is the job provided with the script.
+
+```lua copy
+Config.JobName = "gopostal"
+```
+
+- JobName: `string`
 
 ## Blip
 Sets a Blip at specified position to inform the player about the locations of GoPostal depots.
@@ -124,6 +133,36 @@ Config.Routes = {
             door = vec3(00.00, 00.00, 00.00),
         }
         ```
+
+## Uniform
+
+If enabled the player will wear a uniform during the duty time.
+
+```lua copy
+Config.Uniform = {
+    enabled = true,
+    male = {
+        arms = 11,
+        pants_1 = 13,
+        pants_2 = 0,
+        shoes_1 = 51,
+        shoes_2 = 0,
+        tshirt_1 = 15,
+        tshirt_2 = 0,
+        bproof_1 = 0,
+        torso_1 = 213,
+        torso_2 = 8,
+    },
+    female = {
+
+    }
+}
+```
+
+- Uniform: `table`
+    - enabled: `boolean`
+    - male: `table` (ESX properties)
+    - female: `table` (ESX properties)
 
 ## Text
 Basic Translation.

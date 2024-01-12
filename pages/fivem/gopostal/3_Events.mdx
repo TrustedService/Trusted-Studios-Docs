@@ -1,0 +1,15 @@
+# Events
+
+Events are provided to be implemented in 3rd party resources. 
+
+## Client Events
+
+### Job Started
+
+```lua copy
+AddEventHandler('Trusted:GoPostal:JobStarted', function(vehicle)
+    print(vehicle)
+end)
+```
+
+- vehicle: `number`
