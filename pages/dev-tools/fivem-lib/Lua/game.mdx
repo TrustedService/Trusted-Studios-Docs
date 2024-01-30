@@ -1,0 +1,169 @@
+import { Callout, Tabs, Tab } from 'nextra/components';
+
+Hier sind die Überschriften alphabetisch sortiert:
+
+# Game
+
+## AddAdvancedMarker
+Adds a marker to the world at the given coords. Can be customized a bit more than `Game.AddMarker`.
+
+```lua
+Game.AddAdvancedMarker(id, coords, r, g, b, a, rotation)
+```
+
+- id: `number`
+- coords: `vec3` | `vec4`
+- r: `number`
+- g: `number`
+- b: `number`
+- a: `number`
+
+<Callout type="info">
+    This function has to be called every tick.
+</Callout>
+
+*example:*
+```lua copy
+CreateThread(function()
+    while true do
+        Wait(0)
+        Game.AddAdvancedMarker(1, vec3(10.0, 245.0, 130.0), 255, 255, 255, 255, vec3(0.0, 0.0, 180.0))
+    end
+end)
+```
+
+## AddBlip
+Creates a new blip and returns its id.
+
+```lua
+local blip = Game.AddBlip(x, y, z, id, scale, color, enableWaypoint, blipLabel, shortRange)
+```
+
+- x: `number` | `vec3` | `vec4`
+- y: `number`
+- z: `number`
+- id: `number`
+- scale: `number`
+- color: `number`
+- enableWaypoint: `boolean`
+- blipLabel: `string` | `nil` 
+- shortRange: `boolean` | `nil`
+
+*example:*
+
+```lua copy
+TODO
+```
+
+## AddMarker
+Adds a simple GTA:O Marker to the world at the given coords.
+
+```lua
+Game.AddMarker(x, y, z)
+```
+
+- x: `number` | `vec3` | `vec4`
+- y: `number` | `nil`
+- z: `number` | `nil`
+
+<Callout type="info">
+    This function has to be called every tick.
+</Callout>
+
+*example:*
+
+```lua copy
+TODO
+```
+
+## AddRadiusBlip
+Creates a new radius blip and returns its id.
+
+```lua
+Game.AddRadiusBlip(x, y, z, id, scale, color, enableWaypoint, blipLabel, shortRange)
+```
+
+- x: `number`
+- y: `number`
+- z: `number`
+- id: `number`
+- scale: `number`
+- color: `number`
+- enableWaypoint: `boolean`
+- blipLabel: `string` 
+- shortRange: `boolean`
+
+*example:*
+
+```lua copy
+TODO
+```
+
+## DeleteVehicle
+Checks if the passed entity is a vehicle and deletes it if true.
+
+```lua
+Game.DeleteVehicle(vehicle)
+```
+
+- vehicle: `number`
+
+*example:*
+
+```lua copy
+local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+Game.DeleteVehicle(vehicle)
+```
+
+## GetAdvancedForwardField
+Calculates the foward field of an entity and with an multiplier.
+
+```lua
+Game.GetAdvancedForwardField(entity, multiplier)
+```
+
+- entity: `number`
+- multiplier: `number`
+
+<Callout type="error">
+    This function is deprecated and will be removed over time! Do not use it!
+</Callout>
+
+## GetAdvancedSideField
+Calculates the side field of an entity with an optional multiplier.
+
+```lua
+Game.GetAdvancedSideField(entity, side, multiplier)
+```
+
+- entity: `number`
+- side: `string<'left' | 'right'>`
+- multiplier: `number`
+
+*example:*
+```lua copy
+local ped = PlayerPedId()
+local coords = GetEntityCoords(ped)
+
+local sideField = Game.GetAdvancedSideField(ped, 'left', 2)
+
+print(coords + vec3(sideField.x, sideField.y, 0))
+```
+
+## GetAdvancedSideFieldFromHeading
+
+## GetDistance
+
+## GetForwardField
+
+## IsNearCoords
+
+## IsNearWater
+
+## PlayAnimation
+
+## SpawnObjectAtCoords
+
+## SpawnPed
+
+## SpawnVehicle
