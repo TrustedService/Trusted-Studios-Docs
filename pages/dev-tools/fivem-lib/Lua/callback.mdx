@@ -1,0 +1,39 @@
+import { Callout, Tabs, Tab } from 'nextra/components';
+
+# Callback
+
+<Tabs items={['Client', 'Server']}>
+    <Tab>
+        ```lua
+        Callback:Trigger(eventName, callback, ...)
+        ```
+
+        - eventName: `string`
+        - callback: `function`
+        - argv: `any`
+
+        *example:*
+
+        ```lua copy
+        Callback:Trigger('Trusted:lib:TestEvent', function(callbackValue)
+            print(callbackValue)
+        end, arg1, arg2)
+        ```
+    </Tab>
+    <Tab>
+        ```lua
+        Callback:Register(eventName, callback)
+        ```
+
+        - eventName: `string`
+        - callback: `function`
+
+        *example:*
+
+        ```lua copy
+        Callback:Register('Trusted:lib:TestEvent', function(source, callbackValue, arg1, arg2)
+            callbackValue(arg1 + arg2)
+        end)
+        ```
+    </Tab>
+</Tabs>

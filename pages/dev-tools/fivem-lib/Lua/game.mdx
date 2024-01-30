@@ -1,6 +1,4 @@
-import { Callout, Tabs, Tab } from 'nextra/components';
-
-Hier sind die Überschriften alphabetisch sortiert:
+import { Callout } from 'nextra/components';
 
 # Game
 
@@ -24,12 +22,10 @@ Game.AddAdvancedMarker(id, coords, r, g, b, a, rotation)
 
 *example:*
 ```lua copy
-CreateThread(function()
-    while true do
-        Wait(0)
-        Game.AddAdvancedMarker(1, vec3(10.0, 245.0, 130.0), 255, 255, 255, 255, vec3(0.0, 0.0, 180.0))
-    end
-end)
+while true do
+    Wait(0)
+    Game.AddAdvancedMarker(1, vec3(10.0, 245.0, 130.0), 255, 255, 255, 255, vec3(0.0, 0.0, 180.0))
+end
 ```
 
 ## AddBlip
@@ -125,11 +121,11 @@ Game.GetAdvancedForwardField(entity, multiplier)
 - entity: `number`
 - multiplier: `number`
 
-<Callout type="error">
-    This function is deprecated and will be removed over time! Do not use it!
+<Callout type="warning">
+    This function will soon be rewritten. Avoid using it.
 </Callout>
 
-## GetAdvancedSideField
+{/* ## GetAdvancedSideField
 Calculates the side field of an entity with an optional multiplier.
 
 ```lua
@@ -140,30 +136,150 @@ Game.GetAdvancedSideField(entity, side, multiplier)
 - side: `string<'left' | 'right'>`
 - multiplier: `number`
 
+<Callout type="error">
+    This function is deprecated and will be removed over time! Do not use it!
+</Callout> */}
+
+## GetAdvancedSideFieldFromHeading
+Calculates the side field based on a givin heading and returns it with an optional multiplier.
+```lua
+Game.GetAdvancedSideFieldFromHeading(h, side, multiplier)
+```
+
+- h: `number`
+- side: `string<'left' | 'right'>`
+- multiplier: `number`
+
 *example:*
 ```lua copy
 local ped = PlayerPedId()
 local coords = GetEntityCoords(ped)
 
-local sideField = Game.GetAdvancedSideField(ped, 'left', 2)
+local sideField = Game.GetAdvancedSideField(GetEntityHeading(ped), 'left', 2)
 
 print(coords + vec3(sideField.x, sideField.y, 0))
 ```
 
-## GetAdvancedSideFieldFromHeading
+{/* ## GetDistance
+```lua
+Game.GetDistance(ped, targetCoords, distance)
+```
 
-## GetDistance
+- ped: number
+- targetCoords: number
+- distance: number
+
+<Callout type="error">
+    This function is deprecated and will be removed over time! Do not use it!
+</Callout>
 
 ## GetForwardField
+Calculates the foward field of an entity.
+
+```lua
+Game.GetForwardField(entity)
+```
+
+- entity: number
+
+<Callout type="error">
+    This function is deprecated and will be removed over time! Do not use it!
+</Callout> */}
 
 ## IsNearCoords
+Returns if the given ped is near the target coords based on the rquired distance.
+```lua
+Game.IsNearCoords(ped, targetCoords, distance, reverse)
+```
 
-## IsNearWater
+- ped: `number`
+- targetCoords: `number`
+- distance: `number`
+- reverse: `boolean`
+
+*example:*
+
+```lua copy
+if Game.IsNearCoords(PlayerPedId(), vec3(230.0, 345.01, 50.2), 4, false) then
+    print('Player is near target coords.')
+end
+```
+
+## IsNearWater [Credits](https://github.com/wasabirobby/wasabi_fishing/blob/main/client/functions.lua)
+Checks of the ped is near a water source.
+
+```lua
+Game.IsNearWater(ped)
+```
+
+- ped: `number`
+
+```lua copy
+local isNearWater, waterCoords = Game.IsNearWater(PlayerPedId())
+```
 
 ## PlayAnimation
+Plays an animation to the player ped.
+
+```lua
+Game.PlayAnimation(animDict, animName, flag)
+```
+
+- animDic: `string`
+- animName: `string`
+- flag: `number`
+
+```lua
+Game.PlayAnimation('missheistdocksprep1hold_cellphone', 'static', 48)
+```
 
 ## SpawnObjectAtCoords
+Spawns a new object and returns it entity id.
+
+```lua
+Game.SpawnObjectAtCoords(modelHash, x, y, z, h, isNetwork)
+```
+
+- modelHash: `hash`
+- x: `number`
+- y: `number`
+- z: `number`
+- h: `number`
+- isNetwork: `boolean`
+
+```lua copy
+local object <const> = Game.SpawnObjectAtCoords('prop_security_case_01', GetEntityCoords(PlayerPedId()), true)
+```
 
 ## SpawnPed
+Spawns a new ped and returns its entity id.
+```lua
+Game.SpawnPed(ped, x, y, z, h, freeze, isNetwork)
+```
+
+- ped: `number`
+- x: `number`
+- y: `number`
+- z: `number`
+- h: `number`
+- freeze: `boolean`
+- isNetwork: `boolean`
+
+```lua copy
+local newPed = Game.SpawnPed('s_m_m_armoured_01', vec3(234.23, 645.1, 23.6), true, false)
+```
 
 ## SpawnVehicle
+Creates a new vehicle and returns its entity id.
+
+```lua
+Game.SpawnVehicle(name, inVeh, coords)
+```
+
+- name: `string`
+- inVeh: `boolean`
+- coords: `vec3` | `vec4`
+
+```lua copy
+Game.SpawnVehicle('stockade', true, vec3(234.1, 544.4, 40.2))
+```
