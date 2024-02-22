@@ -52,6 +52,18 @@ Config.NPC = {
 - NPC: `table`
     - ped_model_name: `string`
 
+## Fuel:
+Can be let empty if you don't want to use the fuel system.
+
+```lua copy
+Config.SetFuel = function(entity)
+    exports['myFuel']:SetFuel(entity, 100)
+end
+```
+
+- SetFuel: `function` | `nil`
+    - entity: `number`
+
 ## Rewards: 
 <Callout type="warning">
     Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
