@@ -1,0 +1,60 @@
+import { Callout } from 'nextra/components';
+
+# Server Functions
+
+<Callout type="warning">
+    Please be aware that `frameworkName` is a placeholder for the actual framework name. Replace it with the actual framework name. (for example: `ESX:CanCarryItem()`)
+</Callout>
+
+## CanCarryItem
+Returns true if the player can carry the item, false otherwise.
+
+```lua
+frameworkName:CanCarryItem(source, item, count)
+```
+
+- source: `number`
+- item: `string`
+- count: `number`
+
+## CustomDrop
+Creates a custom drop for the player.
+
+```lua
+frameworkName:CustomDrop(source, item, count)
+```
+
+- source: `number`
+- item: `string`
+- count: `number`
+
+## AddItem
+Adds an item to the player's inventory.
+
+```lua
+frameworkName:AddItem(source, item, count)
+```
+
+- source: `number`
+- item: `string`
+- count: `number`
+
+## RegisterUsableItem
+Registers a usable item.
+
+```lua
+frameworkName:RegisterUsableItem(item, action)
+```
+
+- item: `string`
+- action: `function`
+
+## RemoveItem
+Removes an item from the player's inventory.
+
+```lua
+frameworkName:RemoveItem(source, item, count)
+```
+
+- source: `number`
+- item: `string`

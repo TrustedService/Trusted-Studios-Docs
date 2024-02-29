@@ -59,7 +59,7 @@ This is the main configuration as it defines new garages and their properties. W
 
 <Tabs items={["Standart", "Lightweight"]}>
     <Tab>
-        ```lua copy {2-38}
+        ```lua copy {2-35}
         Config.Garages = {
             ["police"] = {
                 Label = "Police Garage",
@@ -83,9 +83,14 @@ This is the main configuration as it defines new garages and their properties. W
                     ['police2'] = {
                         label = 'Police Interceptor 2',
                         grade = 10, 
+                        livery = 1,
                         defaultExtras = {
                             [1] = true, 
                             [12] = true,
+                        },
+                        modKits = {
+                            [11] = 5,
+                            [12] = 4
                         }
                     },
                 }
@@ -122,38 +127,52 @@ This is the main configuration as it defines new garages and their properties. W
             </Callout>
             - label: `string`
             - grade?: `number` (the grade required to use the vehicle)
+            - livery?: `number`
             - defaultExtras?: `table`
-                <Callout type="info">
-                    Every entry in the `defaultExtras` is registered as a key, value pair. This means that the extra you want to enable should have a key with a number (e.g. `[1]`) and the value `true`.
-                </Callout>
-                - value: `boolean`
-                
-                *example:*
-                ```lua copy
-                defaultExtras = {
-                    [1] = true, 
-                    [12] = true,
-                    ...
-                }
-                ```
-        *example:* 
-        ```lua copy
-        Vehicles = {
-            ['police'] = {
-                label = 'Police Interceptor',
-                grade = 5, 
-            },
-            ['police2'] = {
-                label = 'Police Interceptor 2',
-                grade = 10, 
-                defaultExtras = {
-                    [1] = true, 
-                    [12] = true,
-                }
-            },
-            ...
+            <Callout type="info">
+                Every entry in the `defaultExtras` table is registered as a key, value pair. This means that the extra you want to enable should have a key with a number (e.g. `[1]`) and the value `true`.
+            </Callout>
+            
+            *example:*
+            ```lua copy
+            defaultExtras = {
+                [1] = true, 
+                [12] = true,
+                ...
+            }
+            ```
+            - modKits?: `table`
+            <Callout type="info">
+                Every entry in the `modKits` table is registered as a key, value pair. This means that the modkit you want to enable should have a key with a number (e.g. `[1]`) and the index of the modkit as the value.
+                You can find our more about modkits [here](https://docs.fivem.net/natives/?_0x6AF0636DDEDCB6DD)
+            </Callout>
+
+            *example:*
+            ```lua copy
+            modKits = {
+                [11] = 5,
+                [12] = 4
+            }
+            ```
+
+*example:* 
+```lua copy
+Vehicles = {
+    ['police'] = {
+        label = 'Police Interceptor',
+        grade = 5, 
+    },
+    ['police2'] = {
+        label = 'Police Interceptor 2',
+        grade = 10, 
+        defaultExtras = {
+            [1] = true, 
+            [12] = true,
         }
-        ```
+    },
+    ...
+}
+```
     </Tab>
     <Tab>
         <Callout type="warning">

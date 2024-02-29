@@ -11,21 +11,22 @@
         "title": "Paid Scripts"
     },
     "nitro": "Nitro/Nos Script",
+    "diving": "Advanced Diving & Loot",
     "busdriver": "Busdriver Job",
-    "farming": "Farming Plus",
-    "job_garage": "Advanced Job Garage",
     "gopostal": "GoPostal Job",
+    "marketplace": "Advanced Marketplace",
+    "farming": "Advanced Farming",
+    "job_garage": "Advanced Job Garage",
     "trucker-plus": "Advanced Trucker",
-    "marketplace": "Marketplace",
 
     "free": {
         "type": "separator",
         "title": "Free Scripts"
     },
     "basic-flares": "Basic Flares",
-    "basic-farming": "Basic Farming",
-    "basic-job_garage": "Basic Job Garage",
+    "simple-car-wash": "Simple Car Wash",
     "basic-pkg-bomb": "Basic Pkg Bomb",
     "basic-carkeys": "Basic Car Keys",
-    "simple-car-wash": "Simple Car Wash"
+    "basic-farming": "Basic Farming",
+    "basic-job_garage": "Basic Job Garage"
 }
