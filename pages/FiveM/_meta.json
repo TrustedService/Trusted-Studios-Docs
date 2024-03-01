@@ -11,10 +11,10 @@
         "title": "Paid Scripts"
     },
     "nitro": "Nitro/Nos Script",
-    "diving": "Advanced Diving & Loot",
     "busdriver": "Busdriver Job",
     "gopostal": "GoPostal Job",
     "marketplace": "Advanced Marketplace",
+    "diving": "Advanced Diving & Loot",
     "farming": "Advanced Farming",
     "job_garage": "Advanced Job Garage",
     "trucker-plus": "Advanced Trucker",
@@ -28,5 +28,6 @@
     "basic-pkg-bomb": "Basic Pkg Bomb",
     "basic-carkeys": "Basic Car Keys",
     "basic-farming": "Basic Farming",
-    "basic-job_garage": "Basic Job Garage"
+    "basic-job_garage": "Basic Job Garage",
+    "basic-trucker": "Basic Trucker"
 }

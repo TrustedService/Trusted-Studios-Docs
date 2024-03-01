@@ -1,0 +1,158 @@
+## Configuration Options:
+
+> All configurations are located in `config.lua`.
+
+**Depot**
+
+*Example:*
+```lua
+Config.DepotPoint = {
+    {Label = "LS Logistics", Coords = vector4(1014.18, -2523.53, 28.31, 90.01)}
+}
+```
+
+- Config.DepotPoint: `table`
+    - Label: `string`
+        - Text displayed to the player when clicking the blip.
+    - Coords: `vec4`
+        - Coordinates of the depot, where an NPC is spawned as a reference point. The vector represents `x`, `y`, `z`, and `h` coordinates.
+
+---
+
+**NeedJob**
+
+*Example:*
+```lua
+Config.needJob = true
+```
+
+- Config.needJob: `boolean`
+    - Describes whether a job is required for using the routes or not.
+
+---
+
+**Health**
+
+*Example:*
+```lua
+Config.Health = "engine"
+```
+
+- Config.Health: `string -> 'engine' | 'body'`
+    - Specifies whether engine or body damage is measured.
+
+---
+
+**Vehicle Spawnpoint**
+
+*Example:*
+```lua
+Config.VehSpawnPoint = vector4(983.98, -2530.77, 28.32, 355.00)
+```
+
+- Config.VehSpawnPoint: `vec4`
+    - Coordinates where trucks are spawned.
+
+---
+
+**Trailer Spawnpoint**
+
+*Example:*
+```lua
+Config.TrailerSpwnPoint = vector4(982.92, -2543.71, 28.3, 355.00)
+```
+
+- Config.TrailerSpwnPoint: `vec4`
+    - Coordinates where trailers are spawned.
+
+---
+
+**Endpoints**
+
+*Example:*
+```lua
+Config.Endpoint = vector4(983.98, -2530.77, 28.32, 355.00)
+```
+
+- Config.EndPoint: `vec4`
+    - Coordinates where jobs are completed.
+
+---
+
+**Cooldown**
+
+*Example:*
+
+```lua
+Config.Cooldown = 10
+```
+
+- Config.Cooldown: `integer`
+    - Sets the cooldown of a route after it is completed, preventing a player from repeating the same route immediately. The unit of the cooldown is specified in _seconds_.
+
+---
+
+**Texture Bug**
+
+*Example:*
+```lua
+Config.TxdBug = true
+```
+
+- Config.TxdBug: `boolean`
+    - Due to a bug in certain Artifacts versions, custom textures may have issues. This configuration allows adjustment. If the menu header is white, set this config to `true`.
+
+---
+
+**Routes**
+
+*Example:*
+```lua
+Config.Routen = {
+    {Label = "Wastewater Plant ~y~(Rancho)", price = "~g~80$", Coords = vector3(476.01, -2151.01, 5.93), Reward = 80},
+}
+```
+
+- Config.Routen: `table`
+    - Label: `string`
+        - Name of the route displayed to the player.
+    - price: `string`
+        - Wage displayed to the player in the menu.
+    - Coords: `vec3`
+        - Destination coordinates of the route.
+    - Reward: `integer`
+        - Payment the player receives upon successfully completing the route.
+
+> **IMPORTANT**
+>
+> You can create an infinite number of routes in Config.Routen. You could theoretically set up 10,000 different routes!
+
+---
+
+**Trailer**
+
+*Example:*
+```lua
+Config.Trailers = {
+    {spwn = "trailers"},
+}
+```
+
+- Config.Trailers: `table`
+    - spwn: `string`
+        - Spawn name of a trailer. These are randomly selected in the script.
+
+---
+
+**Trucks**
+
+*Example:*
+```lua
+Config.Trucks = {
+    {spwn = "phantom"},
+}
+```
+
+- Config.Trucks: `table`
+    - spwn: `string`
+        - Spawn name of a truck. These are randomly selected in the script.
