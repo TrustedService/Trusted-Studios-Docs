@@ -1,0 +1,15 @@
+# Extentions
+Our script provides a way to extend the functionality of the script. This can be done by editing the `ext.lua` file in the `client` or `server` folder with the following code snippet:
+
+## Cheat Prevention
+This event will be triggered when the following checks failed:
+- the money the player passed to the server is not the same as the money the server reads in the server-side instance of the config
+- the player is not using a player owned truck and isn't near the depot location (where a mission is supposed to end)
+
+```lua
+AddEventHandler("Trusted:Trucker:Server:PlayerCheating", function(source)
+    --- implement code here
+end)
+```
+
+- source: `number` (the player's server id)

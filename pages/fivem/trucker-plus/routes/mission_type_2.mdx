@@ -1,0 +1,59 @@
+import { Callout } from 'nextra/components';
+
+# Mission Type 2 - Configuration
+
+The second mission type is a bit more complex than the first one. The player will have to do some extra work to complete the mission. The player will have reverse into the loading area to load the cargo onto the truck and then deliver it to the destination repeating the same process. The player will be rewarded with money for completing the mission.
+
+## Routes
+This config option is the heart of any mission and will determine how the mission will behave. It is highly recommended to have **ONE MISSION** per file.
+
+```lua
+Config.Routes["Depot Name"]["Mission Name"] = {
+    rewardMoney = 1000,
+    rewardType = "money",
+    rewardLevel = 5,
+    requiredLevel = 1,
+    pickup = {
+        vec4(-250.59, -248.18, 36.52, 00.00),
+        vec4(-174.09, -1429.42, 31.23, 32.42),
+        vec4(835.98, -1934.71, 28.96, 177.72),
+    },
+    deliver = {
+         vec4(742.22, -667.25, 27.79, 83.04),
+        vec4(-215.13, -2484.84, 6.00, 92.13),
+        vec4(874.80, -1530.75, 30.19, 232.93),
+        vec4(745.00, -966.39, 24.62, 270.08),
+    }
+}
+```
+
+- Routes \<\> \[Depot Name: `string`\]\[Mission Name: `string`\]: `table`
+    - rewardMoney: `number`
+    - rewardType: `string`
+    - rewardLevel: `number`
+    - requiredLevel: `number`
+    - pickup: `table`
+        - vec4(x, y, z, heading): `vector4` (multiple locations can be added, one will be selected randomly)
+    - deliver: `table`
+        - vec4(x, y, z, heading): `vector4` (multiple locations can be added, one will be selected randomly)
+
+
+<Callout type="warning">
+    Please note that the coords within the `pickup` and `deliver` tables, will have to be vector4 (x, y, z, heading) and not vector3 (x, y, z). This ensures that the mission type 2 will work correctly.
+</Callout>
+
+## Trucks
+When players borow a truck to complete the mission, the script will randomly select one of the trucks from the list below. The player will have to use the selected truck to complete the mission.
+
+```lua
+Config.Trucks["Mission Name"] = {
+    'pounder'
+}
+```
+
+- Trucks \<\> \[Mission Name: `string`\]: `table`
+    truckName: string (multiple trucks can be added, one will be selected randomly)
+
+<Callout type="warning">
+    Please make sure that the mission name is the same as the one used in `Config.Routes`, otherwise the script will break.
+</Callout>

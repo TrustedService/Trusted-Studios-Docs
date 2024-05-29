@@ -1,0 +1,63 @@
+# Extentions
+Our script provides a way to extend the functionality of the script. This can be done by editing the `ext.lua` file in the `client` or `server` folder with the following code snippet:
+
+## Truck Spawned
+```lua
+AddEventHandler('Trusted:Trucker:Client:TruckSpawned', function(entity, route)
+    --- implement code here
+end)
+```
+
+- entity: `number` (the entity of the truck)
+- route: `string` (the route name)
+
+
+## Goods Loaded
+```lua
+AddEventHandler('Trusted:Trucker:Client:GoodsLoaded', function(entity, route)
+    --- implement code here
+end)
+```
+
+- entity: `number` (the entity of the truck)
+- route: `string` (the route name)
+
+## Goods Unloaded
+```lua
+AddEventHandler('Trusted:Trucker:Client:GoodsUnloaded', function(entity, route)
+    --- implement code here
+end)
+```
+
+- entity: `number` (the entity of the truck)
+- route: `string` (the route name)
+
+## Truck Deleted
+```lua
+AddEventHandler('Trusted:Trucker:Client:TruckDeleted', function(entity, route)
+    --- implement code here
+end)
+```
+
+- entity: `number` (the entity of the truck)
+- route: `string` (the route name)
+
+## Trailer Spawned
+```lua
+AddEventHandler('Trusted:Trucker:Client:TrailerSpawned', function(entity, route)
+    --- implement code here
+end)
+```
+
+- entity: `number` (the entity of the trailer)
+- route: `string` (the route name)
+
+## Trailer Deleted
+```lua
+AddEventHandler('Trusted:Trucker:Client:TrailerDeleted', function(entity, route)
+    --- implement code here
+end)
+```
+
+- entity: `number` (the entity of the trailer)
+- route: `string` (the route name)

@@ -1,165 +1,82 @@
 import { Callout } from 'nextra/components';
 import { Tabs, Tab} from 'nextra-theme-docs';
 
-# Configurations
+# Config
 
-To ensure that every of your needs are met, make sure to change the options down below to your liking.
+## Framework
+To ensure that the script integrates seamlessly with your server, you'll have to set the framework you're using.
 
-## Job
-
-Determines if the player needs a job to work and if he does, wich one.
-
-<Tabs items={["With Job", "Without Job"]}>
+<Tabs items={['ESX', "OX", "Other"]}>
     <Tab>
-        ```lua copy
-        Config.Job = 'trucker'
+        ```lua
+        Config.Framework = "ESX"
         ```
     </Tab>
     <Tab>
-        ```lua copy
-        Config.Job = nil
+        ```lua
+        Config.Framework = "OX"
+        ```
+    </Tab>
+    <Tab>
+        ```lua
+        Config.Framework = "Other"
         ```
     </Tab>
 </Tabs>
 
-- Job: `string` | `nil`
+- Framework: `string` (the name of your framework)
+
+## Need Job
+If you want to require a job to access the trucker job, you can set the following configuration.
+
+```lua
+Config.NeedJob = true
+```
+
+- NeedJob: `boolean` (true/false)
+
+## Disable Damage
+If you want to disable damage for the trucker job, you can set the following configuration.
+
+```lua
+Config.DisableDamage = true
+```
+
+- DisableDamage: `boolean` (true/false)
 
 ## Depot
-Set position where the player can start jobs.
+The script utilizes depots to determin the starting and ending points of a mission. You can set the following configuration to add, change or remove depots.
 
-```lua copy
-Config.Depot = {.
-    {coords = vec4(-238.94, -1397.78, 31.28, 280.00), truckSpawn = vec4(-221.09, -1363.58, 31.26, 160.00)},
+```lua
+Config.Depot = {
+    ["Depot Name"] = {
+        coords = vec4(-238.94, -1397.82, 31.28, 263.53),
+        truckSpawn = vec4(-224.03, -1368.86, 31.26, 166.37),
+        blip = {
+            id = 477,
+            scale = 0.8,
+            color = -1
+        }
+    },
     ...
 }
 ```
 
 - Depot: `table`
-    - coords: `vec4`
-    - truckSpawn: `vec4`
+    - \[Depot Name: `string`\]: `table`
+        - coords: `vec4` (x, y, z, heading)
+        - truckSpawn: `vec4` (x, y, z, heading)
+        - blip:? `table` (is not required)
+            - id: `number`
+            - scale: `number` (should always be a decimal number / float)
+            - color: `number`
 
-## NPCs
-Set a list of NPCs wich will be used randomly for interaction characters.
+## NPC
+The script utilizes NPCs to give the player missions. You can set the following configuration to add, change or remove NPCs. The script will the proceed to randomly select one of the NPCs to give the player a mission.
 
-```lua copy
+```lua
 Config.NPC = {
     "s_m_m_autoshop_01",
     "s_m_m_dockwork_01",
-    ...
+    "s_m_m_hairdress_01",
 }
-```
-
-- NPC: `table`
-    - ped_model_name: `string`
-
-## Fuel:
-Can be let empty if you don't want to use the fuel system.
-
-```lua copy
-Config.SetFuel = function(entity)
-    exports['myFuel']:SetFuel(entity, 100)
-end
-```
-
-- SetFuel: `function` | `nil`
-    - entity: `number`
-
-## Rewards: 
-<Callout type="warning">
-    Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
-</Callout>
-
-
-```lua copy
-Config.Rewards = {
-    ['Kurze Route'] = {money = 1000, level = 5},
-    ['Mittlere Route'] = {money = 5000, level = 10},
-    ['Lange Route'] = {money = 10000, level = 50},
-}
-```
-
-- Rewards : `table`
-    - route (key): table
-        money: `number`
-        level: `number` (the amount of gained xp)
-
-## Routes: 
-<Callout type="warning">
-    Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
-</Callout>
-
-```lua copy
-Config.Routes = {
-    ['Kurze Route'] = {
-       requiredLevel = 0,
-       start = {
-           vec4(-250.59, -248.18, 36.52, 00.00),
-           ...
-       },
-       deliver = {
-           vec4(742.22, -667.25, 27.79, 83.04),
-           vec4(-215.13, -2484.84, 6.00, 92.13),
-           ...
-       }
-    }
-},
-```
-
-- Routes: `table`
-    - route (key): table
-        - requiredLevel: `number`
-        - start: `table<vec4>` [^1]
-        - deliver: `table<vec4>` 
-
-[^1]: You can add as many coords as you want. The script will then pick one randomly each time you start a route.
-
-
-## Trucks
-<Callout type="warning">
-    Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
-</Callout>
-
-```lua copy
-Config.Trucks = {
-    ['Kurze Route'] = {
-        'mule',
-        'mule2'
-    }
-}
-```
-
-- Trucks: `table`
-    route (key): `table<string>`[^2]
-
-[^2]: The table contains the list of spawnnames. When the player starts a route a truck is then picked randomly.
-
-## Trailers
-<Callout type="warning">
-    Please make sure that the key is matching the other keys! Otherwise the script will not bind the data!
-</Callout>
-
-```lua copy
-Config.Trailers = {
-   ['Lange Route'] = {
-        'trailers'
-    }
-}
-```
-
-- Trucks: `table`
-    route (key): `table<string>`[^3]
-
-[^3]: The table contains the list of spawnnames. When the player starts a route a trailer is then picked randomly. If you don't want to use a trailer just dont add any to the specific route.
-
-## Vertical Infobar Offset:
-Change the y-position of the info bar
-
-```lua copy
-Config.VerticalInfoBarOffset = 1
-```
-
-- VerticalInfoBarOffset: `number`
-
-The greater the number, the higher the y-position.
-
----
