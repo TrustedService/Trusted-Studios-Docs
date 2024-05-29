@@ -1,0 +1,231 @@
+import { Callout, Tabs, Tab } from 'nextra/components';
+
+# Visual
+
+## AddLongString
+Is used with ShowHelpLongString to increase the string length.
+
+```lua
+Visual.AddLongString(text)
+```
+
+- text: `string`
+
+## BottomText
+Adds a basic GTA bottom print.
+
+```lua
+Visual.BottomText(text, time)
+```
+
+- text: `string`
+- time: `number`
+
+*example:*
+
+<Tabs items={['standart', 'optimized']}>
+    <Tab>
+        ```lua copy
+        while true do
+            Wait(0)
+            Visual.BottomText('This is a bottom text')
+        end
+        ```
+
+        `resmon: ~0.05ms`
+    </Tab>
+    <Tab>
+        ```lua copy
+        while true do
+            Visual.BottomText('This is a bottom text', 2500)
+            Wait(2450)
+        end
+        ```
+
+        `resmon: 0.00ms`
+    </Tab>
+</Tabs>
+
+## Draw3DText
+Renders 3d text.
+
+```lua
+Visual.Draw3DText(text, coords)
+```
+
+- text: `string`
+- coords: `table` | `vec3`
+
+<Callout type="info">
+    This function has to be called every tick.
+</Callout>
+
+*example*
+
+```lua copy
+while true do
+    Wait(0)
+    Visual.Draw3DText('This is a 3D Text', vec3(323.3, 13.45, 56.76))
+end
+```
+
+## DrawProgressBar
+Draws a new progress bar.
+
+```lua
+Visual.DrawProgressBar(x, y, width, height, r, g, b, a)
+```
+
+- x: `number`
+- y: `number`
+- width: `number`
+- height: `number`
+- r: `number`
+- g: `number`
+- b: `number`
+- a: `number`
+
+*example:*
+
+```lua
+TODO
+```
+
+## DynamicScreen
+Is used to properly set the screen x coordinates of an native element based on the active screen resolution.
+
+```lua
+Visual.DynamicScreen(offsetX)
+```
+
+- offsetX: `number`
+
+*example:*
+
+```lua
+TODO
+```
+
+## IconNotify
+Displays GTA notification with an icon.
+
+```lua
+Visual.IconNotify(textureDict, textureName, title, subtitle, text)
+```
+
+- textureDict: `string`
+- textureName: `string`
+- title: `string`
+- subtitle: `string`
+- text: `string`
+
+*example:*
+
+```lua
+TODO
+```
+
+## InputBox
+Basic GTA input field.
+
+```lua
+Visual.InputBox(displayText, bitLenght)
+```
+
+- displayText: `string`
+- bitLenght: `number`
+
+*example:*
+
+```lua
+TODO
+```
+
+## MugNotify
+Displays GTA notification with a mugshot of the player.
+
+```lua
+Visual.MugNotify(message, gainedRP, color)
+```
+
+- message: `string`
+- gainedRP: `number`
+- color: `number`
+
+*example:*
+
+```lua
+TODO
+```
+
+## Notify
+Simple GTA notification without any fancy stuff. Just text.
+
+```lua
+Visual.Notify(text)
+```
+
+- text: `string`
+
+*example:*
+
+```lua copy
+Visual.Notify('This is a new notification!')
+```
+
+## RenderSprite
+Renders new sprite.
+
+```lua
+Visual.RenderSprite(txdDict, txdName, x, y, width, height, heading, r, g, b, a)
+```
+
+- txdDict: `string`
+- txdName: `string`
+- x: `number`
+- y: `number`
+- width: `number`
+- height: `number`
+- heading: `number`
+- r: `number`
+- g: `number`
+- b: `number`
+- a: `number`
+
+*example:*
+
+```lua
+TODO
+```
+
+## ShowHelp
+Adds a basic GTA help notification in the top left side of screen.
+
+```lua
+Visual.ShowHelp(text, bleep)
+```
+
+- text: `string`
+- bleep: `boolean`
+
+*example:*
+
+```lua copy
+Visual.ShowHelp('This is a help notification, press ~INPUT_CONTEXT~ to accept TOS!', true)
+```
+
+## ShowHelpLongString
+Adds a basic GTA help notification in the top left side of screen. Can display an infinite string length.
+
+```lua
+Visual.ShowHelp(text, bleep)
+```
+
+- text: `string`
+- bleep: `boolean`
+
+*example:*
+
+```lua copy
+Visual.ShowHelpLongString('This is a very, very, very, veeeeeeerryyyyy long help notification, press ~INPUT_CONTEXT~ to accept TOS!', true)
+```

@@ -1,0 +1,26 @@
+
+import { Callout } from 'nextra/components';
+
+# Exports
+Exports are functions that can be used in other scripts. They are called to pass data or perform certain actions related to its belonging script.
+
+<Callout type='warning'>
+    In order to use exports without any issues you should not change the name of the script it belongs to!
+</Callout>
+
+## GetNitroLevel
+
+```lua copy
+local nitroLevel = exports['ts_nitro']:GetNitroLevel(vehicle)
+```
+
+- vehicle: `number` The vehicle you want to get the nitro level from.
+
+*example:*
+
+```lua
+local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+local nitroLevel = exports['ts_nitro']:GetNitroLevel(vehicle)
+
+print(nitroLevel)
+```

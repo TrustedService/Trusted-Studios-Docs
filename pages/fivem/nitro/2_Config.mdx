@@ -1,0 +1,151 @@
+import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
+
+# Configurations
+
+These configurations have been written to allow each server to make individual adjustments for an enhanced experience.
+
+## Framework
+
+Defines the used Framework to allow the Script to be used on more servers. Frameworks which are supported by default are ox_core, ESX Legacy and Standalone. If you want to add your own Framework you can use bridge functions to do so. More information about the Bridge can be found [here](/fivem/nitro/4_Bridge/1_Client).
+
+<Tabs items={["ESX", "OX", "Standalone", "Other"]}>
+    <Tab>
+        ```lua copy
+        Config.Framework = "ESX"
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.Framework = "OX"
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.Framework = "Standalone"
+        ```
+    </Tab>
+    <Tab>
+        ```lua copy
+        Config.Framework = "Other"
+        ```
+    </Tab>
+</Tabs>
+
+- frameworkName: `string`
+
+## Item
+
+Determines the item name you want to use, the time of usage during installation and the amount needed to install nitro.
+
+```lua copy
+Config.Item = {
+    name = 'nitro',
+    count = 1,
+    useTime = 5000
+}
+```
+
+- name: `string`
+- count: `number`
+- useTime: `number`
+
+
+## Display Settings 
+
+Configure the locale options and some small color settings.
+
+```lua copy
+Config.Display = {
+    color = {r = 255, g = 255, b = 255},
+    Text = {
+        ['add_nitro'] = 'Drücke ~INPUT_VEH_DUCK~ um Nitro einzubauen.',
+        ['nitro_added'] = 'Nitro wurde ~g~erfolgreich~s~ eingbaut!',
+        ['nitro_empty'] = 'Deine Nitro Flasche ist aufgebraucht.',
+        ['nitro_bar_label'] = 'Nitro',
+    }
+}
+```
+
+- Color: `table`
+    - *The RGB code you want to use.*
+    - r: `number`
+    - g: `number`
+    - b: `number`
+
+- Text: `table`
+    - *The locale you want to use.*
+    - translation: `number`
+
+<Callout type='error'>
+    Do **NOT** change the key (for example `['add_nitro']`) or your translations will not work!
+</Callout>
+
+
+
+## Nitro Drainrate
+
+Defines the nitro drain rate. Lower values euquals longer usage time.
+
+```lua copy
+Config.NitroDrainRate = 10
+```
+
+- rate: `number` (default: 10)
+
+
+## Torque Multiplier
+
+```lua copy
+Config.TorqueMultiplier = 2.0
+```
+
+- multiplier: `number` (default: 2.0)
+
+
+## Nitro Activation Key
+
+<Callout type='info'>
+    Note that changes to this configurations will not influence the controler input. This one is pre-defined in the script to prevent missunderstandings.
+    If you want to change this configuration please pick an input index from the official cfx (FiveM) documentation: [FiveM docs](https://docs.fivem.net/docs/game-references/controls).
+</Callout>
+
+```lua copy
+Config.NitroKey = 19
+```
+
+- input: `number`
+
+
+## Custom Visuals
+
+This configurations will override some visual components to match your server's UI.
+
+<Callout type='warning'>
+    Do **NOT** use this config if you don't know what you're doing! We will not support you if you're messing with these configurations!
+</Callout>
+
+```lua copy
+Config.CustomVisual = {
+    HideProgressBar = false,
+    ProgressBarOffset = 25, -- default: 1
+    ShowHelp = function(text, bleep)
+        ---@add: custom show help functionality
+    end,
+    Notify = nil
+}
+```
+
+- HideProgressBar: `boolean` if enabled the Progressbar will be hidden entirely.
+- ProgressBarOffset: `number` Changes the y-position of the Progressbar.
+- ShowHelp?: `function` or `nil`
+    - *Overwrites the scripts `ShowHelp` function. Please keep in mind that this function is called every frame!*
+    - text: `string` (the text wich will be displayed)
+    - bleep: `boolean` (if a sound should be played)
+- Notify?: `function` or `nil`
+    - *Overwrites the scrtips `Notify` function.*
+    - text: `string` (the text wich will be displayed)
+
+<Callout type='info'>
+    You can delete the `ShowHelp` or `Notify` config option if you don't need them. The Script will proceed to use the default `Notify` / `ShowHelp` functions. 
+</Callout>

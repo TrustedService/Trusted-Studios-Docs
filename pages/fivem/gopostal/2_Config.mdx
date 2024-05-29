@@ -1,0 +1,191 @@
+import { Callout } from 'nextra/components';
+import { Tabs, Tab} from 'nextra-theme-docs';
+
+# Configurations
+
+To ensure that every of your needs are met, make sure to change the options down below to your liking.
+
+## Job
+
+Determines if the player needs a job to work with GoPostal.
+
+```lua copy
+Config.NeedJob = true
+```
+
+- NeedJob: `boolean`
+
+## Job Name
+Set the job stored in your Database you want to use. The default value is 'gopostal', wich is the job provided with the script.
+
+```lua copy
+Config.JobName = "gopostal"
+```
+
+- JobName: `string`
+
+## Blip
+Sets a Blip at specified position to inform the player about the locations of GoPostal depots.
+
+```lua copy
+Config.Blip = {
+    id = 793,
+    scale = 0.8,
+    colour = -1,
+}
+```
+
+- Blip: `table`
+    - id: `number`
+    - scale: `float`
+    - colour: `number`
+
+## Random Routes
+Enabled rantomization of the list of stops in a given route.
+
+```lua copy
+Config.RandomizeRoutes = true
+```
+
+- RandomizeRoutes: `boolean`
+
+## Start
+Defines the position where players can start new routes.
+
+```lua copy
+Config.Start = {
+    {route = "Mirror Park", coords = vec4(63.41, 124.20, 79.17, 150.00), transporter_model = "boxville2", desc = "Mirror Park"},
+    ...
+}
+```
+
+- Start: `table`
+    - route: `string`
+    - coords: `vec4`
+    - transporter_model: `string`
+    - desc: `string`
+
+## Depot
+Determines the position at wich the routes ends. 
+
+<Callout type="warning">
+    This Config is binded to a route in `Config.Start`! Please make sure that the key is matching one of the values in `Config.Start`
+</Callout>
+
+```lua copy 
+Config.Depot = {
+    ["Mirror Park"] = vec3(50.95, 118.90, 79.33), 
+    ...
+}
+```
+
+- Depot: `table`
+    - key (route): `vec3`
+
+## Salary
+Sets the amount of money given to the player at the end of a route.
+
+<Callout type="warning">
+    This Config is binded to a route in `Config.Start`! Please make sure that the key is matching one of the values in `Config.Start`
+</Callout>
+
+```lua copy
+Config.Salary = {
+    ["Mirror Park"] = 850,
+    ...
+}
+```
+
+- Salary: `table`
+    - key (route): `number`
+
+## Routes
+A lists of stops the player has to drive.
+
+<Callout type="warning">
+    This Config is binded to a route in `Config.Start`! Please make sure that the key is matching one of the values in `Config.Start`
+</Callout>
+
+```lua copy
+Config.Routes = {
+    ["Mirror Park"] = {
+        {coords = vec3(1072.09, -390.26, 67.13), door = vec3(1063.19, -381.14, 67.85)},
+        {coords = vec3(1020.88, -433.76, 64.71), door = vec3(1012.71, -424.32, 64.95)},
+        {coords = vec3(930.71, -494.20, 59.39), door = vec3(922.15, -479.17, 61.08)},
+        {coords = vec3(875.60, -573.83, 57.02), door = vec3(861.76, -582.80, 58.16)},
+        {coords = vec3(978.83, -562.45, 58.92), door = vec3(975.79, -579.22, 59.64)},
+        {coords = vec3(1183.11, -556.69, 64.19), door = vec3(1203.80, -557.95, 69.40)},
+        {coords = vec3(1328.81, -565.69, 72.87), door = vec3(1324.06, -581.94, 73.25)},
+    },
+    ...
+}
+```
+
+- Routes: `table`
+    - key (ruote): `table`
+        - coords: `vec3`
+        - door: `vec3`
+
+        *example:*
+        ```lua copy
+        {
+            coords = vec3(00.00, 00.00, 00.00),
+            door = vec3(00.00, 00.00, 00.00),
+        }
+        ```
+
+## Uniform
+
+If enabled the player will wear a uniform during the duty time.
+
+```lua copy
+Config.Uniform = {
+    enabled = true,
+    male = {
+        arms = 11,
+        pants_1 = 13,
+        pants_2 = 0,
+        shoes_1 = 51,
+        shoes_2 = 0,
+        tshirt_1 = 15,
+        tshirt_2 = 0,
+        bproof_1 = 0,
+        torso_1 = 213,
+        torso_2 = 8,
+    },
+    female = {
+
+    }
+}
+```
+
+- Uniform: `table`
+    - enabled: `boolean`
+    - male: `table` (ESX properties)
+    - female: `table` (ESX properties)
+
+## Text
+Basic Translation.
+
+```lua copy
+Config.Text = {
+    ['press_button'] = "Drücke ~INPUT_CONTEXT~ um",
+    ['go_off_duty'] = "den Dienst zu quitieren.",
+    ['go_on_duty'] = "in den Dienst zu gehen.",
+    ['start_route'] = "Drücke ~INPUT_CONTEXT~ um die Route ~y~%s~s~ zu starten.",
+    ['route_started'] = "Route begonnen", 
+    ['route_started_description'] = "~y~Fahre zu den Zielorten und Liefere die Pakete ab!",
+    ['route_failed'] = "Du bist nicht mit deinem Dienstfahrzeug zurückgefahren. Du bekommst also ~r~keinen Lohn~s~.",
+    ['route_complete'] = "~g~Fahrt beendet!",
+    ['route_complete_description'] = "Du hast die Fahrt erfolgreich abgeschlossen!",
+    ['target'] = "Zielort",
+    ['delvier_package'] = "Steige aus dem Wagen aus, und bringe das Paket zum ~y~Zielort.",
+    ['press_button_to_deliver'] = "Drücke ~INPUT_CONTEXT~ um das Packet abzuliefern.",
+    ['end_route'] = "Drücke ~INPUT_CONTEXT~ um die Route zu beenden!",
+    ['stop_count'] = "Abgelieferte Pakete: ~b~%s/%s",
+    ['package_health'] = "Zustand der Pakete:",
+    ['route_failed_banner'] = "Fahrt fehlgeschlagen",
+    ['route_failed_banner_desc'] = "~r~Du hast dein Dienstfahrzeug zerstört!",
+    ['go_back_in_transporter'] = "Steige wieder in den ~y~Transporter~s~ ein!"
+}
+```

@@ -1,0 +1,74 @@
+# Config
+
+## Framework
+Set the framework to use.
+
+```lua copy
+Config.Framework = "ESX"
+```
+
+- Framework: `string`
+
+## MaxScubaTime
+Set the maximum time a player can stay underwater.
+
+```lua copy
+Config.MaxScubaTime = 2000.0
+```
+
+- MaxScubaTime: `number`
+
+## LootBoxes
+Set the loot boxes to use.
+
+```lua copy
+Config.LootBoxes = {
+    ['prop_box_tea01a'] = {
+        Coords = {
+            vec3(-1614.98, -1832.01, -36.84),
+            vec3(-1694.97, -1651.84, -26.74),
+            vec3(-1723.48, -1544.82, -25.09),
+            vec3(-1671.59, -1347.89, -13.90),
+            vec3(-1681.30, -1287.33, -11.43),
+            vec3(-1817.60, -2123.07, -54.47),
+            vec3(-1718.80, -2265.34, -24.47),
+            vec3(-1767.18, -2021.27, -56.62),
+            vec3(-1948.61, -1031.70, -12.46),
+            ...
+        },
+        Items = {
+            {
+                item = 'money', 
+                amount = {
+                    min = 100, 
+                    max = 500
+                }
+            },
+            {
+                item = 'sandwich', 
+                amount = {
+                    min = 1, 
+                    max = 4
+                }
+            },
+            {
+                item = 'water', 
+                amount = {
+                    min = 1, 
+                    max = 4
+                }
+            },
+            ...
+        }
+    }
+}
+```
+- LootBoxes: `table`
+    - Coords: `table`
+        - \[prop: `string`\]: `table<vec3>`
+    - Items: `table`
+        - item: `string`
+        - amount: `table`
+            - min: `number`
+            - max: `number`
+

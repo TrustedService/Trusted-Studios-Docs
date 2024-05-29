@@ -1,0 +1,43 @@
+import { Callout } from 'nextra/components';
+
+# Configurations
+
+To provide the best experience with the Flares script we've made shure you can adjust the script to your needs.
+
+## Flare Speed:
+This changes the speed of the projectile. 
+
+```lua copy
+Config.Speed =  -1
+```
+
+- Speed: `number`
+
+## Flare Interval:
+The interval of each projectile determined in ms.
+
+```lua copy
+Config.FlareInterval = 500
+```
+
+- FlareInterval: `number`
+
+## Flare Model Whitelist: 
+A list of vehicles that can use flares.
+
+```lua copy
+Config.Flare_models = {
+    [GetHashKey("lazer")] = {limit = 50, mode = 1},
+    [GetHashKey("bombushka")] = {limit = 150, mode = 10},
+}
+```
+
+- flares_models: `table` 
+    - vehicle Hashkey (key): `table`
+        - limit: `number` (the total amount of flares)
+        - mode: `number` (the amount projectile shot per trigger)
+
+    *example:*
+    ```lua copy
+    [GetHashKey("bombushka")] = {limit = 150, mode = 10}
+    ```
