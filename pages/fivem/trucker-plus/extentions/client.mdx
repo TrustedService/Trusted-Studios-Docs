@@ -1,6 +1,17 @@
 # Extentions
 Our script provides a way to extend the functionality of the script. This can be done by editing the `ext.lua` file in the `client` or `server` folder with the following code snippet:
 
+## Notify
+```lua
+AddEventHandler("Trusted:Trucker:Client:Notify", function(message, type, duration)
+    --- implement extention code
+end)
+```
+
+- message: `string` (the message to display)
+- type: `"error"|"warning"|"success"`
+- duration: `number` (the duration of the notification)
+
 ## Truck Spawned
 ```lua
 AddEventHandler('Trusted:Trucker:Client:TruckSpawned', function(entity, route)

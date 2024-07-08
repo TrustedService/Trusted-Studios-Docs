@@ -14,11 +14,11 @@ Config.Framework = "ESX"
 
 - Framework: `string`
 
-## Duty Start
+## Stations
 Define the location at wich a player can go on/off duty.
 
 ```lua copy
-Config.DutyStart = {
+Config.Stations = {
     {coords = vec3(452.77, -621.58, 28.56), label = 'Bus Station Downtown LS'},
     {coords = vec3(1718.59, 4792.07, 41.98), label = 'Bus Station Blaine County', blip = {
         id = 85,
@@ -28,13 +28,40 @@ Config.DutyStart = {
 }
 ```
 
-- DutyStart: `table`
+- Stations: `table`
     - coords: `vec3` (the position of the bus station)
     - label: `string` (the name of the bus station)
     - blip?: `table` (blip customization)
         - id: `string`
         - scale: `number`
         - color: `number`
+
+## Need Job
+Does the player need a job to be able to start bus lines.
+
+```lua copy
+Config.NeedJob = true
+```
+
+- NeedJob: `boolean`
+
+## Bus Stop Blip (id)
+Set the blip id for the bus stop.
+
+```lua copy
+Config.BusStopBlipId = 513
+```
+
+- BusStopBlipId: `number`
+
+## Enable / disable native waypoint
+Enable / disable the usage of the native (GTA Standard) waypoint.
+
+```lua copy
+Config.UseWaypoint = true
+```
+
+- UseWaypoint: `boolean`
 
 ## Live Blip / Radar
 Enable / disable the usage of a blip that acts as a live radar for players to see the location of a bus line. This blip isn't fully accurate and is only update every few seconds (or what you configured it to be).
@@ -45,6 +72,15 @@ Config.LiveBlip = true
 
 - LiveBlip: `boolean`
 
+## Bus Live Blip (id)
+Set the blip id for the live radar.
+
+```lua copy
+Config.LiveBlipId = 513
+```
+
+- LiveBlipId: `number`
+
 ## Live Blip / Radar Interval
 Choose the interval for every update of the live radar. 
 
@@ -53,15 +89,6 @@ Config.LiveBlipInterval = 1e4 --> 10000
 ```
 
 - LiveBlipInterval: `number`
-
-## Need Job
-Does the player need a job to be able to start bus lines.
-
-```lua copy
-Config.NeedJob = true
-```
-
-- NeedJob: `boolean`
 
 ## Start Location
 Set the starting location of a bus line.
