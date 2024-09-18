@@ -59,7 +59,7 @@ const config: DocsThemeConfig = {
     },
     useNextSeoProps: useNextSeoProps,
     head: useHead,
-    primaryHue: { dark: 30, light: 290 },
+    primaryHue: { dark: 200, light: 290 },
     // sidebar: {
     //     titleComponent({ title, type}) {
     //         return (
