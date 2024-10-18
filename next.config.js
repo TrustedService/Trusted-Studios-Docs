@@ -14,7 +14,7 @@ const withNextra = require('nextra')({
    *
    * @see https://nextjs.org/docs/app/api-reference/next-config-js/basePath
    */
-  basePath: "/docs",
+  basePath: '/Trusted-Studios-Docs',
 })
 
 module.exports = {
