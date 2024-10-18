@@ -9,4 +9,5 @@ module.exports = {
   images: {
     unoptimized: true,
   },
+  basePath: "/Trusted-Studios-Docs",
 }
