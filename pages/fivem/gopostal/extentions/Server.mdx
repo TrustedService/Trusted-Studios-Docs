@@ -1,0 +1,12 @@
+# Extentions
+Our script provides a way to extend the functionality of the script. This can be done by editing the `ext.lua` file in the `client` or `server` folder with the following code snippet:
+
+## Job Finished
+```lua
+AddEventHandler("Trusted:GoPostal:Extention:JobFinished", function(xPlayer, reward)
+    ---@add extention code here.
+end)
+```
+
+- xPlayer: `table` (the player object)
+- reward: `number` (the reward amount)

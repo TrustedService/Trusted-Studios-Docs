@@ -1,0 +1,11 @@
+# Extentions
+Our script provides a way to extend the functionality of the script. This can be done by editing the `ext.lua` file in the `client` or `server` folder with the following code snippet:
+
+## Truck Spawned
+```lua
+AddEventHandler('Trusted:GoPostal:Extention:TruckSpawned', function(entity)
+    --- implement code here
+end)
+```
+
+- entity: `number` (the entity of the truck)
